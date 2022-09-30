@@ -1,31 +1,49 @@
 # coding=utf-8
-from datetime import datetime
+
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from .entities.entity import Session, engine, Base
-from .entities.article import Article
+from .entities.article import Article, ArticleSchema
 
-# generate database schema
+# creating the Flask application
+app = Flask(__name__)
+CORS(app)
+
+# if needed, generate database schema
 Base.metadata.create_all(engine)
 
-# start session
-session = Session()
 
-# check for existing data
-exams = session.query(Article).all()
+@app.route('/articles')
+def get_articles():
+    # fetching from the database
+    session = Session()
+    article_objects = session.query(Article).all()
 
-#author, text, url,  added_by, published_on, header=None
+    # transforming into JSON-serializable objects
+    schema = ArticleSchema(many=True)
+    articles = schema.dump(article_objects)
 
-if len(exams) == 0:
-    # create and persist mock article
-    python_article = Article("", "Thousands of young people have staged a coordinated “global climate strike” across Asia, Africa and Europe in a call for reparations for those worst affected by climate breakdown.", "https://www.theguardian.com/environment/2022/sep/23/thousands-call-for-climate-reparations-and-justice-in-global-protests", "yveitsman", datetime.now(), "Thousands call for ‘climate reparations and justice’ in global protests")
-    session.add(python_article)
-    session.commit()
+    # serializing as JSON
     session.close()
+    print(articles)
+    return jsonify(articles)
 
-# reload exams
-articles = session.query(Article).all()
 
-# show existing exams
-print('### Articles:')
-for article in articles:
-    print(f'({article.id}) {article.title} - {article.text}')
+@app.route('/articles', methods=['POST'])
+def add_article():
+    # mount exam object
+    posted_exam = ArticleSchema(only=('title', 'text'))\
+        .load(request.get_json())
+
+    article = Article(**posted_exam.data, added_by="yveitsman")
+
+    # persist article
+    session = Session()
+    session.add(article)
+    session.commit()
+
+    # return created article
+    new_article = ArticleSchema().dump(article).data
+    session.close()
+    return jsonify(new_article), 201

@@ -2,6 +2,8 @@
 
 from sqlalchemy import Column, String, DateTime
 
+from marshmallow import Schema, fields
+
 from .entity import Entity, Base
 
 
@@ -22,3 +24,12 @@ class Article(Entity, Base):
         self.author = author
         self.published_on = published_on
         self.title = title
+
+class ArticleSchema(Schema):
+    id = fields.Number()
+    title = fields.Str()
+    text = fields.Str()
+    url = fields.Str()
+    header = fields.Str()
+    author = fields.Str()
+    published_on=fields.DateTime()
