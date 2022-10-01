@@ -130,3 +130,6 @@ dmypy.json
 
 #PyCharms
 .idea
+
+#npm
+node_modules

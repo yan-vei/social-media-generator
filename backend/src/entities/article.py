@@ -17,11 +17,12 @@ class Article(Entity, Base):
     author = Column(String)
     published_on = Column(DateTime)
 
-    def __init__(self, author, text, url,  added_by, published_on, title=None):
+    def __init__(self, author, text, url, header,  added_by, published_on, title=None):
         Entity.__init__(self, added_by)
         self.text = text
         self.url = url
         self.author = author
+        self.header = header
         self.published_on = published_on
         self.title = title
 
@@ -32,4 +33,4 @@ class ArticleSchema(Schema):
     url = fields.Str()
     header = fields.Str()
     author = fields.Str()
-    published_on=fields.DateTime()
+    published_on=fields.DateTime(format='%Y-%m-%d')
