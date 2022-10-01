@@ -33,10 +33,10 @@ def get_articles():
 @app.route('/articles', methods=['POST'])
 def add_article():
     # mount exam object
-    posted_exam = ArticleSchema(only=('title', 'text'))\
+    posted_article = ArticleSchema()\
         .load(request.get_json())
-
-    article = Article(**posted_exam.data, added_by="yveitsman")
+    print(posted_article)
+    article = Article(**posted_article, added_by="yveitsman")
 
     # persist article
     session = Session()
@@ -44,6 +44,6 @@ def add_article():
     session.commit()
 
     # return created article
-    new_article = ArticleSchema().dump(article).data
+    new_article = ArticleSchema().dump(article)
     session.close()
     return jsonify(new_article), 201
