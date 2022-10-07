@@ -2,13 +2,12 @@
 
 import requests
 import re
-from bs4 import BeautifulSoup
 
 
 NEGATIVE = re.compile(".*comment.*|.*footer.*|.*foot.*|.*cloud.*|.*head.*|.*side.*|.*menu.*")
 POSITIVE = re.compile(".*post.*|.*hentry.*|.*entry.*|.*content.*|.*text.*|.*body.*|.*article.*|.*summary.*")
 IRRELEVANT = ['script', 'label', 'button', 'time', 'input', 'footer', 'icon', 'form']
-TEXT_TAGS = ['p', 'h1', 'h2', 'h3']
+TEXT_TAGS = ['p', 'h2', 'h3']
 SENTENCES_PATTERN = re.compile(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s')
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0'
@@ -27,9 +26,11 @@ def download_url(url):
     data = r.text
     return data
 
+def get_article_title(soup):
+    soup_title = soup.find('h1')
+    return soup_title.get_text(' ')
 
-def get_article_text(data):
-    soup = BeautifulSoup(data, 'html5lib')
+def get_article_paragraphs(soup):
     resulting_pars = []
     paragraphs = []
 
@@ -76,14 +77,13 @@ def get_article_text(data):
     return resulting_pars
 
 
-def extract_text(data):
+def extract_text(pars):
     text = ""
 
-    for par in data["paragraphs"]:
+    for par in pars:
         if type(par) != str:
             text += ' ' + par.get_text(' ').strip()
         else:
             text += ' ' + par.strip()
-        text.append(par)
 
     return text
