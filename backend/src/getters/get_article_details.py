@@ -8,7 +8,6 @@ NEGATIVE = re.compile(".*comment.*|.*footer.*|.*foot.*|.*cloud.*|.*head.*|.*side
 POSITIVE = re.compile(".*post.*|.*hentry.*|.*entry.*|.*content.*|.*text.*|.*body.*|.*article.*|.*summary.*")
 IRRELEVANT = ['script', 'label', 'button', 'time', 'input', 'footer', 'icon', 'form']
 TEXT_TAGS = ['p', 'h2', 'h3']
-SENTENCES_PATTERN = re.compile(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s')
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0'
 }
