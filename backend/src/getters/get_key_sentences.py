@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def get_pagerank(matrix, eps=0.0001, d=0.85):
     n = len(matrix)
     probs = np.ones(n)/n

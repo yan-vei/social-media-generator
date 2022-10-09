@@ -14,7 +14,7 @@ def load_stopwords(filename):
 def substitute_in_text(text):
     text = text.encode('ascii', errors='ignore').decode()
     text = re.sub(r"’", "'", text)
-    text = re.sub(r"“", ' " ', text)
+    text = re.sub(r"“", '"', text)
     text = text.lower()
     text = re.sub(r'http\S+', ' ', text)
     text = re.sub(r"([A-Za-z]+)'s", r"\1 is", text)
