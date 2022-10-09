@@ -1,5 +1,5 @@
-from ..entities.article import Article, ArticleSchema
-from ..entities.entity import Session
+from backend.src.entities.article import Article, ArticleSchema
+from backend.src.entities.entity import Session
 
 def save_article(text, url, title, added_by):
     article = Article(text, url, title, added_by)
