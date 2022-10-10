@@ -50,7 +50,7 @@ def tokenize_into_sentences(text):
 
 
 def preprocess_text(text):
-    path = os.getcwd() + '\\helpers\\data\\stopwords.txt'
+    path = os.getcwd() + '\\services\\data\\stopwords.txt'
     stop_words = load_stopwords(path)
     sentences = tokenize_into_sentences(text)
     sentences_processed = list(map(substitute_in_text, sentences))

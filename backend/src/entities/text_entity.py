@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from datetime import datetime
-from sqlalchemy import create_engine, Column, String, Integer, DateTime
+from sqlalchemy import create_engine, Column, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -14,11 +14,10 @@ Session = sessionmaker(bind=engine)
 
 Base = declarative_base()
 
-class Entity():
-    id = Column(Integer, primary_key=True)
-    created_at = Column(DateTime)
-    added_by = Column(String)
 
-    def __init__(self, added_by):
-        self.created_at = datetime.now()
-        self.added_by = added_by
+class TextEntity():
+    id = Column(Integer, primary_key=True)
+    added_at = Column(DateTime)
+
+    def __init__(self):
+        self.added_at = datetime.now()
