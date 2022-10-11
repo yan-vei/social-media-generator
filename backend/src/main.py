@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from backend.src.entities.entity import engine, Base
 from routes import articles_routes, text_extracts_routes, posts_routes
 from services import text_preprocessor
-from getters import get_article_details, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences
+from getters import get_article_details, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action
 
 
 app = Flask(__name__)
@@ -34,6 +34,7 @@ def generate_post():
         data["quotes"] = get_quotes.get_quotes(data["sentences"])
         data["numbers"] = get_numbers.get_numbers(data["sentences"])
         data["first_sentences"] = get_first_sentence.get_first_sentence(data["paragraphs"])
+        data["CallsToAction"] = get_calls_to_action.get_calls_to_action()
 
     #new_article = articles_controller.save_article(data["text"], data["url"], data["title"], added_by="yveitsman")
 
