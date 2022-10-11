@@ -4,8 +4,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from bs4 import BeautifulSoup
 
-from backend.src.entities.text_entity import engine, Base
-from routes import articles_routes, text_extracts_routes
+from backend.src.entities.entity import engine, Base
+from routes import articles_routes, text_extracts_routes, posts_routes
 from services import text_preprocessor
 from getters import get_article_details, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences
 
@@ -14,10 +14,11 @@ app = Flask(__name__)
 
 app.register_blueprint(articles_routes.articles)
 app.register_blueprint(text_extracts_routes.text_extracts)
+app.register_blueprint(posts_routes.posts)
 CORS(app)
 
 
-@app.route('/posts', methods=['POST'])
+@app.route('/post', methods=['POST'])
 def generate_post():
     data = request.get_json()
     if "url" in data:
