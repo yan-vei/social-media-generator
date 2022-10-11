@@ -1,10 +1,11 @@
 # coding=utf-8
 
 from sqlalchemy import Column, String
-
 from marshmallow import Schema, fields
+from sqlalchemy.orm import relationship
 
-from .text_entity import TextEntity, Base
+from .entity import Base
+from .text_entity import TextEntity
 
 
 class Article(TextEntity, Base):
@@ -13,6 +14,8 @@ class Article(TextEntity, Base):
     text = Column(String)
     url = Column(String)
     title = Column(String)
+
+    posts = relationship("Post", backref="articles")
 
     def __init__(self, text, url, title, added_by):
         TextEntity.__init__(self)

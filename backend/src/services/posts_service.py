@@ -5,6 +5,10 @@ def validate_schema(request):
     try:
         post = PostSchema() \
             .load(request.get_json())
-        return post
     except:
-        raise Exception("Invalid text extract schema")
+        raise Exception("Invalid post schema")
+
+    if (post['text_extract_id'] == None and post['article_id'] == None):
+        raise Exception("Post doesn't contain neither text_extract_id nor article_id")
+
+    return post

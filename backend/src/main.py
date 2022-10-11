@@ -4,62 +4,21 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from bs4 import BeautifulSoup
 
-from backend.src.entities.text_entity import engine, Base
-from services import articles_service, text_extracts_service, text_preprocessor
+from backend.src.entities.entity import engine, Base
+from routes import articles_routes, text_extracts_routes, posts_routes
+from services import text_preprocessor
 from getters import get_article_details, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences
-from controllers import articles_controller, text_extracts_controller
 
 
 app = Flask(__name__)
+
+app.register_blueprint(articles_routes.articles)
+app.register_blueprint(text_extracts_routes.text_extracts)
+app.register_blueprint(posts_routes.posts)
 CORS(app)
 
 
-@app.route('/articles')
-def get_articles():
-    articles = articles_controller.get_articles()
-
-    return jsonify(articles)
-
-
-@app.route('/articles', methods=['DELETE'])
-def delete_article():
-    id = request.args.get('id')
-    articles_controller.delete_article_by_id(id)
-
-    return(jsonify("Successfully deleted the article with the id " + id), 200)
-
-
-@app.route('/articles', methods=['POST'])
-def save_article():
-    posted_article = articles_service.validate_schema(request)
-    new_article = articles_controller.save_article(**posted_article)
-
-    return jsonify(new_article), 201
-
-
-@app.route('/text-extracts')
-def get_text_extracts():
-    text_extracts = text_extracts_controller.get_text_extracts()
-
-    return jsonify(text_extracts), 200
-
-@app.route('/text-extracts', methods=['POST'])
-def save_text_extract():
-    posted_text_extract = text_extracts_service.validate_schema(request)
-    new_text_extract = text_extracts_controller.save_text_extract(**posted_text_extract)
-
-    return jsonify(new_text_extract), 201
-
-
-@app.route('/text-extracts', methods=['DELETE'])
-def delete_text_extract():
-    id = request.args.get('id')
-    text_extracts_controller.delete_text_extract_by_id(id)
-
-    return(jsonify("Successfully deleted the text extract with the id " + id), 200)
-
-
-@app.route('/posts', methods=['POST'])
+@app.route('/post', methods=['POST'])
 def generate_post():
     data = request.get_json()
     if "url" in data:

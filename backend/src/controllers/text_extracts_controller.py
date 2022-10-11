@@ -1,5 +1,5 @@
 from backend.src.entities.text_extract import TextExtract, TextExtractSchema
-from backend.src.entities.text_entity import Session
+from backend.src.entities.entity import Session
 
 
 def save_text_extract(text, title, added_by):

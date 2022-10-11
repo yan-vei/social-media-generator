@@ -1,9 +1,9 @@
 from backend.src.entities.post import Post, PostSchema
-from backend.src.entities.text_entity import Session
+from backend.src.entities.entity import Session
 
 
-def save_post(text, article_id, text_extract_id, added_by):
-    post = Post(text, article_id, text_extract_id, added_by)
+def save_post(post, article_id, text_extract_id):
+    post = Post(post, article_id, text_extract_id)
 
     session = Session()
     session.add(post)
