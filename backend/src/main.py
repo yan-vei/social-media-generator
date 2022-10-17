@@ -29,12 +29,12 @@ def generate_post():
         data["title"] = get_article_details.get_article_title(data["soup"])
         data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
 
-        data["key_sentences"] = get_key_sentences.get_key_sentences(data["sentences"], data["sentences_tokenized"])
-        data["questions"] = get_questions.get_questions(data["text"])
-        data["quotes"] = get_quotes.get_quotes(data["sentences"])
-        data["numbers"] = get_numbers.get_numbers(data["sentences"])
-        data["first_sentences"] = get_first_sentence.get_first_sentence(data["paragraphs"])
-        data["CallsToAction"] = get_calls_to_action.get_calls_to_action()
+    data["KeySentence"] = get_key_sentences.get_key_sentences(data["sentences"], data["sentences_tokenized"])
+    data["Question"] = get_questions.get_questions(data["text"])
+    data["Number"] = get_numbers.get_numbers(data["sentences"])
+    data["FirstSentence"] = get_first_sentence.get_first_sentence(data["paragraphs"])
+    data["AlwaysValidCTAs"] = get_calls_to_action.get_calls_to_action()
+    data["Quotes"] = get_quotes.get_quotes(data["paragraphs"])
 
     #new_article = articles_controller.save_article(data["text"], data["url"], data["title"], added_by="yveitsman")
 

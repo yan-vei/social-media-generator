@@ -1,6 +1,16 @@
 import numpy as np
+from backend.src.services import emoji_counter
 
-def get_pagerank(matrix, eps=0.0001, d=0.85):
+definition = {
+    'type': 'KeySentence',
+    'description': 'Get key sentences from the data.',
+    'score': 4,
+    'score description': 'Block scores according to how pagerank algorithm ranks it.',
+    'notes': 'Description of how the getter was scored',
+    'generatedLength': 0
+}
+
+def evaluate(matrix, eps=0.0001, d=0.85):
     n = len(matrix)
     probs = np.ones(n)/n
     for i in range(10):
@@ -34,14 +44,26 @@ def build_sim_matrix(sentences_tokenized, metrics):
 
 def get_textrank(sentences_tokenized):
     matrix = build_sim_matrix(sentences_tokenized, get_cosine_similarity)
-    ranks = get_pagerank(matrix)
+    ranks = evaluate(matrix)
     return matrix, ranks
 
 
-def get_key_sentences(sentences, sentences_tokenized, topn=3):
+def get_key_sentences(sentences, sentences_tokenized):
+    result = [definition]
+
     matrix, ranks = get_textrank(sentences_tokenized)
-    result = []
-    for tuple in ranks[:topn]:
-        index = tuple[0]
-        result.append((sentences[index], tuple[1]))
+    topn = 3 if int(len(sentences) * 0.1) < 3 else int(len(sentences) * 0.1)
+
+    for pair in ranks[:topn]:
+        index = pair[0]
+        emoji_count = emoji_counter.count_emoji(sentences[index])
+        result.append({
+            "result": sentences[index],
+            "score": int(pair[1]),
+            "notes": "Score assigned by pagerank. ",
+            "emoji_count": emoji_count
+        })
+
+    result[0]["generatedLength"] = len(result) - 1
+
     return result
