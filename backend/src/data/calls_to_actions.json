@@ -1,54 +1,67 @@
 [
   {
     "call": "#JustIn➡",
-    "score": 20
+    "score": 20,
+    "emoji_count": 1
   },
   {
     "call": "Act now",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Click➡",
-    "score": 20
+    "score": 20,
+    "emoji_count": 1
   },
   {
     "call": "Don't miss",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Discover now",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Learn more",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Read more",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Research more",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Search more",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "See details",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "See how",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "Visit!",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   },
   {
     "call": "View",
-    "score": 20
+    "score": 20,
+    "emoji_count": 0
   }
 ]

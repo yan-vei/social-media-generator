@@ -1,0 +1,402 @@
+[
+    {
+        "result": "As [Quotes:author] said, [Quotes:quote]: [URL:url]",
+        "score": 3,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes:result] [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "As [Quotes:author] said, [Quotes:quote]! [AlwaysValidCTAs]. [URL:url]",
+        "score": 3,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes] [AlwaysValidCTAs]: [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Numbers] [Question] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[AlwaysValidCTAs]! [Quotes] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[AlwaysValidCTAs] [Quotes:author]  [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes] [AlwaysValidCTAs] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[AlwaysValidCTAs] [Quotes] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes] [Question] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Numbers] [AlwaysValidCTAs] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [AlwaysValidCTAs] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Numbers] [Question] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes] [Numbers] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes] [Question] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [AlwaysValidCTAs] [Quotes] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Countries] [AlwaysValidCTAs]. [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Countries] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Page:title] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Page:description] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "❓[Question] [Numbers] Learn more👉 [URL:url]",
+        "score": 3,
+        "emoji_count": 2
+    },
+    {
+        "result": "[Numbers] Take a look at [Page:article:author]'s article in [Page:og:site_name] [URL:url]",
+        "score": 3,
+        "emoji_count": 0
+    },
+    {
+        "result": "🆕 [Question] [Page:title] [URL:url]",
+        "score": 3,
+        "emoji_count": 1
+    },
+    {
+        "result": "#JustIn➡️ [Page:description] [Page:title] [URL:url]",
+        "score": 3,
+        "emoji_count": 1
+    },
+    {
+        "result": "[Page:description] Read more in [Page:article:author]'s article \"[Page:title]\" in [Page:og:site_name] [URL:url]",
+        "score": 4,
+        "emoji_count": 0
+    },
+    {
+        "result": "Author [Page:article:author] talks about \"[Page:title]\":[Page:description] Read in [Page:og:site_name] now: [URL:url]",
+        "score": 4,
+        "emoji_count": 0
+    },
+    {
+        "result": "⁉️[Question] We are looking at what [Page:article:author] and [Page:og:site_name] have to say on the subject: [URL:url]",
+        "score": 4,
+        "emoji_count": 0
+    },
+    {
+        "result": "In our blog [Page:article:author] argues [Page:description] [Question] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes:quote] says [Quotes:author] in [Page:og:site_name] [Page:description] [URL:url]",
+        "score": 3,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Images] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Numbers] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [URL:url]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Page:topics] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "📷 [Images] find out more about [Page:title] [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "📷 [Images] [Page:description] [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "📢 NEW 📢\n[Question] [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "🤔 According to [Quotes:author] [Quotes:quote] [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "❓ Interested in [Page:title]? [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "❓ Interested in [Page:topics] ❓\n[Page:description] Read more about it here: [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "[Quotes:author] said [Quotes:quote] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[AlwaysValidCTAs] [Page:description] [Page:title] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": ".[Page:author_twitter] shares: [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Quotes:quote], said [Quotes:author] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "📰 .[Page:author_twitter] talked about [Page:title] Read all about it here: [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "Want to learn about [Page:topics]? [Page:author_twitter] talks about '[Page:description]' [URL:url] 🤩",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "[Quotes:quote] - [Quotes:author] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "🆕 [Page:description] [Page:author_twitter] [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": ".[Page:author_twitter] writes about [Page:topics] ✍️ [AlwaysValidCTAs] 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "[FirstSentence] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [FirstSentence] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[FirstSentence] [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "📢 NEW 📢\n[FirstSentence] [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "[FirstSentence] [Question] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[FirstSentence] [AlwaysValidCTAs] 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "[FirstSentence].. Want to read more? Look it up here 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "[Page:article:author] said [FirstSentence] Read more 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "[Title] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [AlwaysValidCTAs]: [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Question] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[AlwaysValidCTAs]! [Title] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [Title] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Question] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Numbers] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Quotes] [AlwaysValidCTAs] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [AlwaysValidCTAs] [Quotes] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "❓[Question] [Title] Learn more👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "[Title] Take a look at [Page:article:author]'s article in [Page:og:site_name] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "📢 NEW 📢\n[Title] [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": ".[Page:publication_twitter] shares: [Page:description] [AlwaysValidCTAs] 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": ".[Page:publication_twitter] shares: [Numbers] [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "📰 [Page:publication_twitter] wrote about [Page:title] Read all about it here: [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": "Want to learn about [Page:topics]? [Page:publication_twitter] writes about '[Page:description]' [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "🆕 [Page:description] [Page:publication_twitter] [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": ".[Page:publication_twitter] writes about [Page:topics] ✍️ [AlwaysValidCTAs] 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "Interested in [Page:title]. .[Page:publication_twitter] writes about '[Page:description]' [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "Check out .[Page:publication_twitter] post about '[Page:description]' [URL:url]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "According to [Page:publication_twitter]: '[Page:description]' [AlwaysValidCTAs] 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    },
+    {
+        "result": ".[Page:publication_twitter] [FirstSentence] [AlwaysValidCTAs] 👉 [URL:url]",
+        "score": 2,
+        "emoji_count": 1
+    }
+]
