@@ -7,8 +7,8 @@ from bs4 import BeautifulSoup
 from backend.src.entities.entity import engine, Base
 from routes import articles_routes, text_extracts_routes, posts_routes
 from services import text_preprocessor
-from getters import get_article_details, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
-
+from getters import get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
+import template_engine
 
 app = Flask(__name__)
 
@@ -29,6 +29,7 @@ def generate_post():
         data["title"] = get_article_details.get_article_title(data["soup"])
         data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
 
+    data["URL"] = get_url.get_url(data["url"])
     data["KeySentence"] = get_key_sentences.get_key_sentences(data["sentences"], data["sentences_tokenized"])
     data["Question"] = get_questions.get_questions(data["text"])
     data["Number"] = get_numbers.get_numbers(data["sentences"])
@@ -36,6 +37,8 @@ def generate_post():
     data["AlwaysValidCTAs"] = get_calls_to_action.get_calls_to_action()
     data["Quotes"] = get_quotes.get_quotes(data["paragraphs"])
     data["Page"] = get_page_details.get_page_details(data["soup"])
+
+    data["Tweets"] = template_engine.get_tweets(data)
 
     #new_article = articles_controller.save_article(data["text"], data["url"], data["title"], added_by="yveitsman")
 
