@@ -1,0 +1,62 @@
+[
+    {
+        "item": "and",
+        "replacement": "&",
+        "aggressiveness": 1
+    },
+    {
+        "item": "with",
+        "replacement": "w/",
+        "aggressiveness": 2
+    },
+    {
+        "item": "percent",
+        "replacement": "%",
+        "aggressiveness": 1
+    },
+    {
+        "item": "one",
+        "replacement": "1",
+        "aggressiveness": 1
+    },
+    {
+        "item": "two",
+        "replacement": "2",
+        "aggressiveness": 1
+    },
+    {
+        "item": "three",
+        "replacement": "3",
+        "aggressiveness": 1
+    },
+    {
+        "item": "four",
+        "replacement": "4",
+        "aggressiveness": 1
+    },
+    {
+        "item": "five",
+        "replacement": "5",
+        "aggressiveness": 1
+    },
+    {
+        "item": "six",
+        "replacement": "6",
+        "aggressiveness": 1
+    },
+    {
+        "item": "seven",
+        "replacement": "7",
+        "aggressiveness": 1
+    },
+    {
+        "item": "eight",
+        "replacement": "8",
+        "aggressiveness": 1
+    },
+    {
+        "item": "nine",
+        "replacement": "9",
+        "aggressiveness": 1
+    }
+]
