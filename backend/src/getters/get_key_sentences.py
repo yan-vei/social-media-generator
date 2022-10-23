@@ -4,7 +4,7 @@ from backend.src.services import emoji_counter
 definition = {
     'type': 'KeySentence',
     'description': 'Get key sentences from the data.',
-    'score': 4,
+    'score': 10,
     'score description': 'Block scores according to how pagerank algorithm ranks it.',
     'notes': 'Description of how the getter was scored',
     'generatedLength': 0
@@ -59,7 +59,7 @@ def get_key_sentences(sentences, sentences_tokenized):
         emoji_count = emoji_counter.count_emoji(sentences[index])
         result.append({
             "result": sentences[index],
-            "score": int(pair[1]),
+            "score": definition["score"] + int(pair[1]),
             "notes": "Score assigned by pagerank. ",
             "emoji_count": emoji_count
         })

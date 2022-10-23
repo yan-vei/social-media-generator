@@ -13,7 +13,7 @@ definition = {
             "If the length is even worse, and more than 'Tweet Fail Length', it downscores with 'Penalty Fail Length'.  "+
             "Because we favor full tweets, if the tweet is not too long and more than 'Tweet Golden Length', we add 'Upscore Golden Length'.",
         'Tweet Fail Length': 320,
-        'Penalty Fail Length': 20,
+        'Penalty Fail Length': 30,
         'TweetLength': 280,
         'TweetURLLength': 23 +1,
         'TweetLength Scores': {'291-300': 2, '281-290': 4, '270-280': 10, '260-269': 7,
