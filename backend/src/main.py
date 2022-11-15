@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from backend.src.entities.entity import engine, Base
 from routes import articles_routes, text_extracts_routes, posts_routes
 from services import text_preprocessor
-from getters import get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
+from getters import get_hashtags, get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
 import template_engine
 
 app = Flask(__name__)
@@ -39,6 +39,8 @@ def generate_post():
     data["Page"] = get_page_details.get_page_details(data["soup"])
 
     data["Tweets"] = template_engine.get_tweets(data)
+    data["Hashtags"] = get_hashtags.get_hashtags(data['text'])
+    print(data["Hashtags"])
 
     #new_article = articles_controller.save_article(data["text"], data["url"], data["title"], added_by="yveitsman")
 
