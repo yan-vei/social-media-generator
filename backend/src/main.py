@@ -1,24 +1,25 @@
 # coding=utf-8
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response, session
 from flask_cors import CORS
+from flask_bcrypt import Bcrypt
 from bs4 import BeautifulSoup
-
-from backend.src.entities.entity import engine, Base
 from routes import articles_routes, text_extracts_routes, posts_routes, hashtags_routes
+from backend.src.entities.entity import engine, Base
 from services import text_preprocessor
-from controllers import hashtags_controller, articles_controller, posts_controller, text_extracts_controller
+from controllers import hashtags_controller, articles_controller, posts_controller, text_extracts_controller, users_controller
 from getters import get_source, get_title, get_hashtags, get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
 import template_engine
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+bcrypt = Bcrypt(app)
+CORS(app)
 
 app.register_blueprint(articles_routes.articles)
 app.register_blueprint(text_extracts_routes.text_extracts)
 app.register_blueprint(posts_routes.posts)
 app.register_blueprint(hashtags_routes.hashtags)
-CORS(app)
-
 
 @app.route('/postsss', methods=['DELETE'])
 def delete_posts():
@@ -31,9 +32,11 @@ def delete_hashtags():
     hashtags_controller.delete_hashtags_batch()
     return jsonify({'message': "OK"}), 200
 
-
 @app.route('/posts', methods=['POST'])
 def generate_post():
+    if 'logged_in' not in session.keys() or not session['logged_in']:
+        return make_response({'message': 'Not authorized to view this page'}, 401)
+
     data = request.get_json()
     new_article_id = None
     new_text_extract_id = None
@@ -52,7 +55,7 @@ def generate_post():
                 for tag in hashtags:
                     result["hashtags"].append({tag['hashtag']: tag['score']})
 
-                return jsonify(result), 200
+                return make_response(jsonify(result), 200)
 
         data["markup"] = get_article_details.download_url(data["url"])
         data["soup"] = BeautifulSoup(data["markup"], 'html5lib')
@@ -94,7 +97,7 @@ def generate_post():
         new_text_extract_id = new_text_extract['id']
 
     else:
-        return jsonify({'message': 'Invalid format'}), 400
+        return make_response(jsonify({'message': 'Invalid format'}), 400)
 
 
     data["KeySentence"] = get_key_sentences.get_key_sentences(data["sentences"], data["sentences_tokenized"])
@@ -118,7 +121,50 @@ def generate_post():
             for h, score in hashtag.items():
                 hashtags_controller.save_hashtag(new_article_id, new_text_extract_id, h, score)
 
-    return jsonify(result), 201
+    return make_response(jsonify(result), 201)
+
+@app.route('/users/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    if "username" in data and "email" in data and "password" in data:
+        new_user = users_controller.save_user(data["email"], data["password"], data["username"])
+        if new_user != "Already exists":
+            return make_response(jsonify({'message': 'Created new user with username ' + new_user['username']}), 201)
+    else:
+        return make_response(jsonify({'error': 'Invalid user data'}), 400)
+
+    return make_response(jsonify({'message': 'User already exists'}), 200)
+
+
+@app.route('/users/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    status = False
+    if "username" in data and "password" in data:
+        if users_controller.login_user(data["username"], data["password"]):
+            session['logged_in'] = True
+            session['username'] = data['username']
+            status = True
+    else:
+        return make_response(jsonify({'error': 'Invalid parameters passed'}), 400)
+
+    return jsonify({'result': status})
+
+
+@app.route('/users/logout')
+def logout():
+    session.pop('logged_in', None)
+    session.pop('username', None)
+    return make_response(jsonify({'message': 'success'}), 200)
+
+
+@app.route('/users/status')
+def status():
+    if session.get('logged_in'):
+        if session['logged_in']:
+            return make_response(jsonify({'message': 'success'}), 200)
+    else:
+        return make_response(jsonify({'message': 'failed'}), 500)
 
 
 if __name__ == '__main__':
