@@ -1,7 +1,6 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
 from backend.src.controllers import posts_controller
-from backend.src.services import posts_service
 
 posts = Blueprint("posts", __name__)
 
@@ -25,15 +24,3 @@ def delete_post():
 
     except Exception as e:
         return make_response(jsonify({"message": e, "status": "failed"}), 500)
-
-
-@posts.route('/posts', methods=['POST'])
-def save_post():
-    try:
-        posted_post = posts_service.validate_schema(request)
-        new_post = posts_controller.save_post(**posted_post)
-
-        return make_response(jsonify(new_post), 201)
-
-    except Exception as e:
-        return make_response(jsonify({"message": e, "status": "failed"}), 400)
