@@ -26,11 +26,6 @@ def download_url(url):
     return data
 
 
-def get_article_title(soup):
-    soup_title = soup.find('h1')
-    return soup_title.get_text(' ')
-
-
 def get_article_paragraphs(soup):
     resulting_pars = []
     paragraphs = []

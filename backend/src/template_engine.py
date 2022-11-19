@@ -13,7 +13,7 @@ definition = {
             "If the length is even worse, and more than 'Tweet Fail Length', it downscores with 'Penalty Fail Length'.  "+
             "Because we favor full tweets, if the tweet is not too long and more than 'Tweet Golden Length', we add 'Upscore Golden Length'.",
         'Tweet Fail Length': 320,
-        'Penalty Fail Length': 20,
+        'Penalty Fail Length': 30,
         'TweetLength': 280,
         'TweetURLLength': 23 +1,
         'TweetLength Scores': {'291-300': 2, '281-290': 4, '270-280': 10, '260-269': 7,
@@ -29,7 +29,7 @@ jsonFile.close()
 tweetbook = [definition]
 
 
-def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emojies, sources):
+def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emojies):
     depth += 1
     tags = re.findall(r'\[(.*?)\]' ,text)
     firsttag = tags[0]
@@ -38,7 +38,7 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
         firsttag += ":result"
     getter = firsttag.split(":", 1)[0]
     if getter not in result:
-        return "invalid getter" # returning something nobody will get is like talking to yourself
+        return "invalid getter"
     dataset = result[getter].copy()
     dataset.pop(0)
 
@@ -47,7 +47,6 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
         tweet = text
         newnote = notes
         blockscore = score
-        updatedsources = list(sources)
 
         for tag in gettertags:
             safetag = tag
@@ -63,7 +62,6 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
                 continue
 
             tagdata = block[detail]
-            updatedsources.append(tagdata)
             if lengthlimit > 0:
                 if len(tagdata) > lengthlimit:
                     tagdata = tweet_shortner.send_to_shorten(tagdata, lengthlimit)
@@ -92,7 +90,7 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
 
 
         if len(re.findall(r'\[(.*?)\]' ,tweet)) > 0:
-            generate_tweets(tweet, template, blockscore, depth, newnote, lengthoffset, block_emojies, updatedsources)
+            generate_tweets(tweet, template, blockscore, depth, newnote, lengthoffset, block_emojies)
         else:
             tweetLength = (int(len(tweet) - lengthoffset)) + template_emoji + block_emojies
             finalscore = float(blockscore / depth) + template_score
@@ -113,12 +111,11 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
                         break
 
             tweetbook.append({
-                "result": tweet,
+                "post": tweet,
                 "template": template,
                 "score": finalscore,
                 "notes": newnote,
                 "length": tweetLength,
-                "sources": updatedsources
                 })
     return None
 
@@ -134,6 +131,6 @@ def get_tweets(data):
         template_emoji = template['emoji_count']
         note = 'Template score: +' + str(template['score']) + '.'
 
-        generate_tweets(line, line, 0, 0, note, 0, 0, [])
+        generate_tweets(line, line, 0, 0, note, 0, 0)
     tweetbook[0]["generatedLength"] = len(tweetbook) -1
     return tweetbook

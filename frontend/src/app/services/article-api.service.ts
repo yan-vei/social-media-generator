@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 import {API_URL} from '../env';
-import {Article} from './article.model';
+import {Article} from '../entities/article.model';
 
 @Injectable()
 export class ArticleApiService {

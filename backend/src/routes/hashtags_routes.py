@@ -1,24 +1,24 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
-from backend.src.controllers import posts_controller
+from backend.src.controllers import  hashtags_controller
 
-posts = Blueprint("posts", __name__)
+hashtags = Blueprint("hashtags", __name__)
 
-@posts.route('/posts')
+@hashtags.route('/hashtags')
 def get_posts():
     try:
-        posts = posts_controller.get_posts()
+        posts = hashtags_controller.get_hashtags()
 
         return make_response(jsonify(posts), 200)
 
     except Exception as e:
         return make_response(jsonify({"message": e, "status": "failed"}), 500)
 
-@posts.route('/posts', methods=['DELETE'])
+@hashtags.route('/hashtags', methods=['DELETE'])
 def delete_post():
     try:
         id = request.args.get('id')
-        posts_controller.delete_post_by_id(id)
+        hashtags_controller.delete_hashtag_by_id(id)
 
         return make_response(jsonify({"status": "success", "message:": "Successfully deleted the post with the id " + id}), 200)
 

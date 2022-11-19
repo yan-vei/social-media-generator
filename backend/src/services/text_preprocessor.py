@@ -58,3 +58,11 @@ def preprocess_text(text):
     sentences_tokenized = [sentence for sentence in map(lambda x : remove_stop(x.split()), sentences_processed) if sentence]
 
     return sentences, sentences_tokenized
+
+
+def preprocess_for_keywords(text):
+    text = text.lower()
+    text = re.sub("(\\d|\\W)+", " ", text)
+    text = [text]
+
+    return text

@@ -8,5 +8,6 @@ db_user = 'postgres'
 db_password = 's0cial-media-generator'
 engine = create_engine(f'postgresql://{db_user}:{db_password}@{db_url}/{db_name}')
 Session = sessionmaker(bind=engine)
+BCRYPT_LOG_ROUNDS = 13
 
 Base = declarative_base()

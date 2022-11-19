@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {ArticleApiService} from './articles/article-api.service';
-import {Article} from './articles/article.model';
+import {ArticleApiService} from './services/article-api.service';
+import {Article} from './entities/article.model';
 
 @Component({
   selector: 'app-root',
