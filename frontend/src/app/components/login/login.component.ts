@@ -18,4 +18,12 @@ export class LoginComponent {
 
   constructor(private router: Router, private auth: AuthService, private fb: FormBuilder) {}
 
+  onSubmit(): void {
+    let user = new User(this.profileForm.controls.username.value || '', this.profileForm.controls.email.value || '', this.profileForm.controls.password.value || '')
+    this.auth.login(user)
+    .subscribe((user) =>
+    {
+      console.log(user);
+    })
+  }
 }

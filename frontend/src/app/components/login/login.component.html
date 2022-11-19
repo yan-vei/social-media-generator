@@ -12,4 +12,4 @@
 </form>
 
 <p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+<button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Submit</button>
