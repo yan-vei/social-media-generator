@@ -38,7 +38,7 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
         firsttag += ":result"
     getter = firsttag.split(":", 1)[0]
     if getter not in result:
-        return "invalid getter" # returning something nobody will get is like talking to yourself
+        return "invalid getter"
     dataset = result[getter].copy()
     dataset.pop(0)
 

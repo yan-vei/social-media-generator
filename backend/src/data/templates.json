@@ -80,16 +80,6 @@
         "emoji_count": 0
     },
     {
-        "result": "[Countries] [AlwaysValidCTAs]. [URL:url]",
-        "score": 1,
-        "emoji_count": 0
-    },
-    {
-        "result": "[Countries] [URL:url]",
-        "score": 1,
-        "emoji_count": 0
-    },
-    {
         "result": "[Quotes] [URL:url]",
         "score": 1,
         "emoji_count": 0
@@ -150,11 +140,6 @@
         "emoji_count": 0
     },
     {
-        "result": "[Images] [URL:url]",
-        "score": 1,
-        "emoji_count": 0
-    },
-    {
         "result": "[Numbers] [URL:url]",
         "score": 1,
         "emoji_count": 0
@@ -168,16 +153,6 @@
         "result": "[Page:topics] [URL:url]",
         "score": 2,
         "emoji_count": 0
-    },
-    {
-        "result": "📷 [Images] find out more about [Page:title] [URL:url]",
-        "score": 2,
-        "emoji_count": 1
-    },
-    {
-        "result": "📷 [Images] [Page:description] [URL:url]",
-        "score": 2,
-        "emoji_count": 1
     },
     {
         "result": "📢 NEW 📢\n[Question] [Numbers] [URL:url]",
@@ -398,5 +373,95 @@
         "result": ".[Page:publication_twitter] [FirstSentence] [AlwaysValidCTAs] 👉 [URL:url]",
         "score": 2,
         "emoji_count": 1
+    },
+    {
+        "result": "[Numbers] [Question] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Numbers] [AlwaysValidCTAs] [SOURCE:source]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [AlwaysValidCTAs] [SOURCE:source]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Numbers] [Question] [AlwaysValidCTAs] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "❓[Question] [Numbers] Learn more👉 [SOURCE:source]",
+        "score": 3,
+        "emoji_count": 2
+    },
+    {
+        "result": "[Numbers] [SOURCE:source]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [SOURCE:source]",
+        "score": 1,
+        "emoji_count": 0
+    },
+    {
+        "result": "📢 NEW 📢\n[Question] [Numbers] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "[Question] [Numbers] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [AlwaysValidCTAs]: [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Question] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[AlwaysValidCTAs]! [Title] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Question] [Title] [AlwaysValidCTAs] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Question] [AlwaysValidCTAs] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "[Title] [Numbers] [AlwaysValidCTAs] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 0
+    },
+    {
+        "result": "❓[Question] [Title] Learn more👉 [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 2
+    },
+    {
+        "result": "📢 NEW 📢\n[Title] [Numbers] [SOURCE:source]",
+        "score": 2,
+        "emoji_count": 2
     }
 ]

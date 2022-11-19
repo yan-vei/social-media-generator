@@ -7,7 +7,8 @@ from bs4 import BeautifulSoup
 from backend.src.entities.entity import engine, Base
 from routes import articles_routes, text_extracts_routes, posts_routes
 from services import text_preprocessor
-from getters import get_hashtags, get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
+from controllers import articles_controller, posts_controller, text_extracts_controller
+from getters import get_source, get_title, get_hashtags, get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
 import template_engine
 
 app = Flask(__name__)
@@ -29,22 +30,37 @@ def generate_post():
         data["title"] = get_article_details.get_article_title(data["soup"])
         data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
 
-    data["URL"] = get_url.get_url(data["url"])
+        data["URL"] = get_url.get_url(data["url"])
+        data["FirstSentence"] = get_first_sentence.get_first_sentence(data["paragraphs"])
+        data["Quotes"] = get_quotes.get_quotes(data["paragraphs"])
+        data["Page"] = get_page_details.get_page_details(data["soup"])
+        data["Title"] = get_title.get_title(data["soup"], data["FirstSentence"])
+
+        #articles_controller.save_article(data["text"], data["url"], data["title"], added_by="yveitsman")
+
+    elif "text" in data and "title" in data and "source" in data:
+        data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
+        data["Title"] = get_title.get_excerpt_title(data["title"])
+        data["SOURCE"] = get_source.get_source(data["source"])
+
+
+    else:
+        return jsonify({'message': 'Invalid format'}), 400
+
+
     data["KeySentence"] = get_key_sentences.get_key_sentences(data["sentences"], data["sentences_tokenized"])
     data["Question"] = get_questions.get_questions(data["text"])
     data["Number"] = get_numbers.get_numbers(data["sentences"])
-    data["FirstSentence"] = get_first_sentence.get_first_sentence(data["paragraphs"])
     data["AlwaysValidCTAs"] = get_calls_to_action.get_calls_to_action()
-    data["Quotes"] = get_quotes.get_quotes(data["paragraphs"])
-    data["Page"] = get_page_details.get_page_details(data["soup"])
 
     data["Tweets"] = template_engine.get_tweets(data)
     data["Hashtags"] = get_hashtags.get_hashtags(data['text'])
-    print(data["Hashtags"])
 
-    #new_article = articles_controller.save_article(data["text"], data["url"], data["title"], added_by="yveitsman")
+    result = {}
+    result["tweets"] = data["Tweets"]
+    result["hashtags"] = data["Hashtags"]
 
-    return jsonify("OK"), 201
+    return jsonify(result), 201
 
 
 if __name__ == '__main__':
