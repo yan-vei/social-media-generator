@@ -14,6 +14,7 @@ class Article(TextEntity, Base):
     text = Column(String)
     url = Column(String)
     title = Column(String)
+    added_by = Column(String)
 
     posts = relationship("Post", backref="articles")
 

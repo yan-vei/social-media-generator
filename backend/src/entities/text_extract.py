@@ -13,6 +13,7 @@ class TextExtract(TextEntity, Base):
 
     text = Column(String)
     title = Column(String)
+    added_by = Column(String)
 
     posts = relationship("Post", backref="text_extracts")
 
