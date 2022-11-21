@@ -4,10 +4,18 @@
 
 <h2>Articles</h2>
 <div *ngFor="let article of this.articles">
+  <p>Article id: {{article.id}}</p>
   <p>Title: {{article.title}}</p>
   <p>Url: {{article.url}}</p>
   <p>Text: {{article.text}}</p>
   <p>Generated at: {{article.added_at}}</p>
+  <button (click)="getArticleTweets(article.id)">Get posts</button>
+
+  <div *ngIf="this.articleTweets">
+    <div *ngFor="let tweet of this.articleTweets">
+      <p>{{ tweet.post }}</p>
+    </div>
+  </div>
 </div>
 
 <h2>Texts</h2>
@@ -15,4 +23,11 @@
   <p>Title: {{text.title}}</p>
   <p>Text: {{text.text}}</p>
   <p>Generated at: {{text.added_at}}</p>
+  <button (click)="getTextExtractsTweets(text.id)">Get posts</button>
+
+  <div *ngIf="this.textTweets">
+    <div *ngFor="let tweet of this.textTweets">
+      <p>{{ tweet.post }}</p>
+    </div>
+  </div>
 </div>
