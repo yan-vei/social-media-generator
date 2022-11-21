@@ -1,0 +1,18 @@
+<h1>History</h1>
+<button (click)="getArticles()">Get Articles</button>
+<button (click)="getTexts()">Get Texts</button>
+
+<h2>Articles</h2>
+<div *ngFor="let article of this.articles">
+  <p>Title: {{article.title}}</p>
+  <p>Url: {{article.url}}</p>
+  <p>Text: {{article.text}}</p>
+  <p>Generated at: {{article.added_at}}</p>
+</div>
+
+<h2>Texts</h2>
+<div *ngFor="let text of this.texts">
+  <p>Title: {{text.title}}</p>
+  <p>Text: {{text.text}}</p>
+  <p>Generated at: {{text.added_at}}</p>
+</div>

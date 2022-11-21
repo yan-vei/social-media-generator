@@ -5,18 +5,6 @@ from backend.src.services import articles_service
 
 articles = Blueprint("articles", __name__)
 
-@articles.route('/articles')
-def get_articles():
-    try:
-        articles = articles_controller.get_articles()
-
-        return make_response(jsonify(articles), 200)
-
-    except Exception as e:
-        return make_response(jsonify({"message": e, "status": "failed"}), 500)
-
-
-
 @articles.route('/articles', methods=['DELETE'])
 def delete_article():
     try:

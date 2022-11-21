@@ -30,6 +30,11 @@ export class LoginComponent implements OnInit {
     .subscribe((user) =>
     {
       localStorage.setItem(this.token, user['token']);
+      this.router.navigate(['/generator']);
+    },
+    (err) =>
+    {
+      console.log(err);
     })
   }
 }

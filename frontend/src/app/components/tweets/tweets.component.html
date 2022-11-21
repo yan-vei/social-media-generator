@@ -3,3 +3,10 @@
     <span>{{ this.getHashtag(i) }} - {{ this.getHashtagScore(i) }}</span>
   </li>
 </div>
+
+<div>
+  <div *ngFor="let tweet of generatedTweets; index as i">
+    <span>{{tweet.post}}</span><br>
+    <span>Score: {{tweet.score}}</span>
+  </div>
+</div>
