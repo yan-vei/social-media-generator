@@ -11,7 +11,6 @@ export class ArticleApiService {
   constructor(private http: HttpClient) {
   }
 
-  // GET list of public, future events
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(`${API_URL}/articles`);
   }
