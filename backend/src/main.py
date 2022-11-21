@@ -24,6 +24,10 @@ app.register_blueprint(hashtags_routes.hashtags)
 @app.route('/posts', methods=['POST'])
 def generate_post():
     user_token = request.headers['Authorization']
+
+    if user_token == None or user_token == '':
+        return make_response(jsonify({'message': 'Unauthorized access. Login first'}), 401)
+
     data = request.get_json()
     new_article_id = None
     new_text_extract_id = None
