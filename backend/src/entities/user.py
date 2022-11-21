@@ -21,6 +21,8 @@ class User(Base):
 
     articles = relationship("Article", backref="users")
     text_extracts = relationship("TextExtract", backref="users")
+    articles = relationship("Article", backref="articles_and_users")
+    text_extracts = relationship("TextExtract", backref="text_extracts_and_users")
 
     def __init__(self, email, password, username, admin=False):
         self.email = email

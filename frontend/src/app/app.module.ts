@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { GeneratorComponent } from './components/generator/generator.component';
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
+import { TweetsComponent } from './components/tweets/tweets.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { EnsureAuthenticated } from './services/ensure-authenticated.service';
     RegisterComponent,
     HomeComponent,
     GeneratorComponent,
+    TweetsComponent,
   ],
   imports: [
     BrowserModule,

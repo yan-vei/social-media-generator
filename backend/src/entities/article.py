@@ -17,6 +17,7 @@ class Article(TextEntity, Base):
     added_by = Column(Integer, ForeignKey("users.id"))
 
     posts = relationship("Post", backref="articles")
+    users = relationship("ArticlesAndUsers", backref="articles_and_users")
 
     def __init__(self, text, url, title, added_by):
         TextEntity.__init__(self)
@@ -30,6 +31,6 @@ class ArticleSchema(Schema):
     title = fields.Str()
     text = fields.Str()
     url = fields.Str()
-    added_by = fields.Str()
+    added_by = fields.Number()
     added_at = fields.Str()
 

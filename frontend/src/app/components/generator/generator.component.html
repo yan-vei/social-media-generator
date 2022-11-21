@@ -5,5 +5,19 @@
 
 </form>
 
+<h1>OR</h1>
+
+<form [formGroup]="textForm">
+
+  <label for="title">Insert title: </label>
+  <input id="title" type="text" formControlName="title">
+
+  <label for="text">Insert text: </label>
+  <input id="text" type="text" formControlName="text">
+
+</form>
+
 <p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!urlForm.valid" (click)="generateTweets()">Submit</button>
+<button type="submit" [disabled]="!urlForm.valid && textForm.valid" (click)="generateTweets()">Submit</button>
+
+<tweets [generatedTweets]="generatedTweets" [generatedHashtags]="generatedHashtags"></tweets>
