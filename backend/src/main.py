@@ -28,7 +28,7 @@ def generate_post():
     new_article_id = None
     new_text_extract_id = None
 
-    user_id = users_controller.get_user_by_token(user_token)
+    user_id = users_controller.get_user_by_token(user_token)['id']
 
     if "url" in data:
         articles = articles_controller.get_articles()
