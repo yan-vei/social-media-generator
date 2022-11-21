@@ -9,8 +9,8 @@ import { GeneratorService } from 'src/app/services/generator.service';
   styleUrls: ['./generator.component.css']
 })
 export class GeneratorComponent implements OnInit {
-  generatedTweets: any = null;
-  generatedHashtags: any = null;
+  public generatedTweets: any = null;
+  public generatedHashtags: any = null;
 
   urlForm = this.fb.group({
     url: [, Validators.required]

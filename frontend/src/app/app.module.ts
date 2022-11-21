@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
-import { ArticleApiService } from './services/article-api.service';
+import { ArticleService } from './services/article.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
@@ -14,6 +14,9 @@ import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { TweetsComponent } from './components/tweets/tweets.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HistoryComponent } from './components/history/history.component';
+import { TextService } from './services/text.service';
+import { GeneratorService } from './services/generator.service';
+import { LogoutService } from './services/logout.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { HistoryComponent } from './components/history/history.component';
   ],
   providers: [
     AuthService,
-    ArticleApiService,
+    ArticleService,
+    TextService,
+    GeneratorService,
+    LogoutService,
     EnsureAuthenticated
   ],
   bootstrap: [AppComponent]
