@@ -168,6 +168,19 @@ def status():
         return make_response(jsonify({'message': 'failed'}), 500)
 
 
+@app.route('/articles')
+def get_article_history():
+    user_token = request.headers['Authorization']
+
+    if user_token == None or user_token == '':
+        return make_response(jsonify({'message': 'Unauthorized access. Login first'}), 401)
+
+    user_id = users_controller.get_user_by_token(user_token)['id']
+    articles = articles_extracts_users_controller.get_articles_by_user_id(user_id)
+
+    return make_response(jsonify(articles), 200)
+
+
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
     app.run(debug = True)
