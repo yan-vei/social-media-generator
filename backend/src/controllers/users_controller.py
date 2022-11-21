@@ -28,6 +28,12 @@ def login_user(username, password):
     return False
 
 
+def get_user_by_token(token):
+    session = Session()
+    user = session.query(User).filter_by(token=token).first()
+    return UserSchema().dump(user)
+
+
 def delete_users_batch():
     session = Session()
     session.query(User).delete()

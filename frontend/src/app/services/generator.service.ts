@@ -8,7 +8,8 @@ import {API_URL} from '../env';
   providedIn: 'root'
 })
 export class GeneratorService {
-  private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  private userToken: string = localStorage.getItem("user_token") || '';
+  private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': this.userToken});
 
   constructor(private http: HttpClient) { }
 

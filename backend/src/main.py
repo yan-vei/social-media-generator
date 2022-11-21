@@ -21,22 +21,14 @@ app.register_blueprint(text_extracts_routes.text_extracts)
 app.register_blueprint(posts_routes.posts)
 app.register_blueprint(hashtags_routes.hashtags)
 
-@app.route('/postsss', methods=['DELETE'])
-def delete_posts():
-    posts_controller.delete_posts_batch()
-    return jsonify({'message': "OK"}), 200
-
-
-@app.route('/hashtagsss', methods=['DELETE'])
-def delete_hashtags():
-    hashtags_controller.delete_hashtags_batch()
-    return jsonify({'message': "OK"}), 200
-
 @app.route('/posts', methods=['POST'])
 def generate_post():
+    user_token = request.headers['Authorization']
     data = request.get_json()
     new_article_id = None
     new_text_extract_id = None
+
+    user_id = users_controller.get_user_by_token(user_token)
 
     if "url" in data:
         articles = articles_controller.get_articles()
@@ -46,7 +38,7 @@ def generate_post():
                 posts.insert(0, template_engine.definition)
                 hashtags = hashtags_controller.get_hashtags_by_article_id(article['id'])
 
-                articles_extracts_users_controller.save_article_and_user(1, article['id'])
+                articles_extracts_users_controller.save_article_and_user(user_id, article['id'])
 
                 result = {}
                 result["tweets"] = posts
@@ -68,8 +60,8 @@ def generate_post():
         data["Page"] = get_page_details.get_page_details(data["soup"])
         data["Title"] = get_title.get_title(data["soup"], data["FirstSentence"])
 
-        new_article = articles_controller.save_article(data["text"], data["url"], data["Title"][1]["result"], added_by=1)
-        articles_extracts_users_controller.save_article_and_user(1, new_article['id'])
+        new_article = articles_controller.save_article(data["text"], data["url"], data["Title"][1]["result"], added_by=user_id)
+        articles_extracts_users_controller.save_article_and_user(user_id, new_article['id'])
         new_article_id = new_article['id']
 
     elif "text" in data and "title" in data and "source" in data:
@@ -82,7 +74,7 @@ def generate_post():
                 posts.insert(0, template_engine.definition)
                 hashtags = hashtags_controller.get_hashtags_by_text_extract_id(text_extract['id'])
 
-                articles_extracts_users_controller.save_text_extracts_and_user(1, text_extract['id'])
+                articles_extracts_users_controller.save_text_extracts_and_user(user_id, text_extract['id'])
 
                 result = {}
                 result["tweets"] = posts
@@ -95,8 +87,8 @@ def generate_post():
         data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
         data["SOURCE"] = get_source.get_source(data["source"])
 
-        new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], added_by=1)
-        articles_extracts_users_controller.save_text_extracts_and_user(1, new_text_extract['id'])
+        new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], added_by=user_id)
+        articles_extracts_users_controller.save_text_extracts_and_user(user_id, new_text_extract['id'])
         new_text_extract_id = new_text_extract['id']
 
     else:

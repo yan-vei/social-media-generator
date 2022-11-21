@@ -4,16 +4,23 @@ from backend.src.entities.entity import Session
 
 
 def save_article_and_user(user_id, article_id):
-    articleAndUser = ArticlesAndUsers(user_id, article_id)
+    try:
+        articleAndUser = ArticlesAndUsers(user_id, article_id)
 
-    session = Session()
-    session.add(articleAndUser)
-    session.commit()
+        session = Session()
+        session.add(articleAndUser)
+        session.commit()
 
-    new_article = ArticlesAndUsersSchema().dump(articleAndUser)
-    session.close()
+        new_article = ArticlesAndUsersSchema().dump(articleAndUser)
+        session.close()
 
-    return new_article
+        return new_article
+    except:
+        session = Session()
+        article = session.query(ArticlesAndUsers).filter_by(article_id=article_id)
+        session.close()
+
+        return article
 
 
 def get_articles_and_users():
@@ -29,17 +36,23 @@ def get_articles_and_users():
 
 
 def save_text_extracts_and_user(user_id, text_extract_id):
-    textExtractAndUser = TextExtractsAndUsers(user_id, text_extract_id)
+    try:
+        textExtractAndUser = TextExtractsAndUsers(user_id, text_extract_id)
 
-    session = Session()
-    session.add(textExtractAndUser)
-    session.commit()
+        session = Session()
+        session.add(textExtractAndUser)
+        session.commit()
 
-    new_article = TextExtractsAndUsersSchema().dump(textExtractAndUser)
-    session.close()
+        new_text_extract = TextExtractsAndUsersSchema().dump(textExtractAndUser)
+        session.close()
 
-    return new_article
+        return new_text_extract
+    except:
+        session = Session()
+        text_extract = session.query(TextExtractsAndUsers).filter_by(text_extract_id=text_extract_id)
+        session.close()
 
+        return text_extract
 
 def get_text_extracts_and_users():
     session = Session()
