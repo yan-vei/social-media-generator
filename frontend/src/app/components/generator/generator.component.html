@@ -1,1 +1,9 @@
-<p>generator works!</p>
+<form [formGroup]="urlForm">
+
+  <label for="url">Insert URL: </label>
+  <input id="url" type="text" formControlName="url">
+
+</form>
+
+<p>Complete the form to enable button.</p>
+<button type="submit" [disabled]="!urlForm.valid" (click)="generateTweets()">Submit</button>

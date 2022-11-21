@@ -34,9 +34,6 @@ def delete_hashtags():
 
 @app.route('/posts', methods=['POST'])
 def generate_post():
-    if 'logged_in' not in session.keys() or not session['logged_in']:
-        return make_response({'message': 'Not authorized to view this page'}, 401)
-
     data = request.get_json()
     new_article_id = None
     new_text_extract_id = None
@@ -69,7 +66,7 @@ def generate_post():
         data["Page"] = get_page_details.get_page_details(data["soup"])
         data["Title"] = get_title.get_title(data["soup"], data["FirstSentence"])
 
-        new_article = articles_controller.save_article(data["text"], data["url"], data["Title"][1]["result"], added_by="yveitsman")
+        new_article = articles_controller.save_article(data["text"], data["url"], data["Title"][1]["result"], added_by=1)
         new_article_id = new_article['id']
 
     elif "text" in data and "title" in data and "source" in data:
@@ -93,7 +90,7 @@ def generate_post():
         data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
         data["SOURCE"] = get_source.get_source(data["source"])
 
-        new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], added_by="yveitsman")
+        new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], added_by=1)
         new_text_extract_id = new_text_extract['id']
 
     else:

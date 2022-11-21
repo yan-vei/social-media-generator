@@ -11,6 +11,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('user_token'))
+    {
+      this.router.navigate(['/generator'])
+    }
   }
 
 }
