@@ -1,0 +1,5 @@
+<div>
+  <li *ngFor="let hashtag of generatedHashtags; index as i ">
+    <span>{{ this.getHashtag(i) }} - {{ this.getHashtagScore(i) }}</span>
+  </li>
+</div>
