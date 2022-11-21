@@ -176,9 +176,30 @@ def get_article_history():
         return make_response(jsonify({'message': 'Unauthorized access. Login first'}), 401)
 
     user_id = users_controller.get_user_by_token(user_token)['id']
-    articles = articles_extracts_users_controller.get_articles_by_user_id(user_id)
+    articles_by_user = articles_extracts_users_controller.get_articles_by_user_id(user_id)
+    ids = []
+    for article in articles_by_user:
+        ids.append(article['article_id'])
+    articles = articles_controller.get_article_by_ids(ids)
 
     return make_response(jsonify(articles), 200)
+
+
+@app.route('/text-extracts')
+def get_text_extracts_history():
+    user_token = request.headers['Authorization']
+
+    if user_token == None or user_token == '':
+        return make_response(jsonify({'message': 'Unauthorized access. Login first'}), 401)
+
+    user_id = users_controller.get_user_by_token(user_token)['id']
+    text_extracts_by_user = articles_extracts_users_controller.get_text_extracts_by_user_id(user_id)
+    ids = []
+    for extract in text_extracts_by_user:
+        ids.append(extract['text_extract_id'])
+    text_extracts = text_extracts_controller.get_text_extracts_by_ids(ids)
+
+    return make_response(jsonify(text_extracts), 200)
 
 
 if __name__ == '__main__':

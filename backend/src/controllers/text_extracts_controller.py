@@ -27,6 +27,19 @@ def get_text_extracts():
     return text_extracts
 
 
+def get_text_extracts_by_ids(ids):
+    session = Session()
+    schema = TextExtractSchema(many=True)
+
+    text_extracts_by_user = session.query(TextExtract).filter(TextExtract.id.in_(ids))
+
+    text_extracts_objects = schema.dump(text_extracts_by_user)
+
+    session.close()
+
+    return text_extracts_objects
+
+
 def delete_text_extract_by_id(id):
     session = Session()
     session.query(TextExtract).filter_by(id=id).delete()

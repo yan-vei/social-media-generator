@@ -35,6 +35,17 @@ def get_articles_and_users():
     return articles
 
 
+def get_articles_by_user_id(user_id):
+    session = Session()
+    article_objects = session.query(ArticlesAndUsers).filter_by(user_id=user_id)
+
+    schema = ArticlesAndUsersSchema(many=True)
+    articles = schema.dump(article_objects)
+
+    session.close()
+
+    return articles
+
 def save_text_extracts_and_user(user_id, text_extract_id):
     try:
         textExtractAndUser = TextExtractsAndUsers(user_id, text_extract_id)
@@ -64,4 +75,18 @@ def get_text_extracts_and_users():
     session.close()
 
     return articles
+
+
+def get_text_extracts_by_user_id(user_id):
+    session = Session()
+    text_extracts_objects = session.query(TextExtractsAndUsers).filter_by(user_id=user_id)
+
+    schema = TextExtractsAndUsersSchema(many=True)
+    text_extracts = schema.dump(text_extracts_objects)
+
+    session.close()
+
+    return text_extracts
+
+
 
