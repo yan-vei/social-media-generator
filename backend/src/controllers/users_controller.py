@@ -24,7 +24,7 @@ def login_user(username, password):
     session = Session()
     user = session.query(User).filter_by(username=username).first()
     if user and bcrypt.check_password_hash(user.password, password):
-        return True
+        return UserSchema().dump(user)
     return False
 
 

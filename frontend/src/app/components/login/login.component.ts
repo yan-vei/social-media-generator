@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../entities/user.model';
@@ -9,21 +9,27 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  token: string = 'user_token';
+
   profileForm = this.fb.group({
     username: [, Validators.required],
-    email: [, Validators.required],
     password: [, Validators.required]
   });
 
-  constructor(private router: Router, private auth: AuthService, private fb: FormBuilder) {}
+  constructor(private router: Router, private auth: AuthService, private fb: FormBuilder) {
+  }
 
-  onSubmit(): void {
-    let user = new User(this.profileForm.controls.username.value || '', this.profileForm.controls.email.value || '', this.profileForm.controls.password.value || '')
+  ngOnInit()
+  {
+  }
+
+  onLogin(): void {
+    let user = new User(this.profileForm.controls.username.value || '', this.profileForm.controls.password.value || '')
     this.auth.login(user)
     .subscribe((user) =>
     {
-      console.log(user);
+      localStorage.setItem(this.token, user['token']);
     })
   }
 }
