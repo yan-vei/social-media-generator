@@ -1,11 +1,12 @@
 # coding=utf-8
 
-from sqlalchemy import Column, String, Integer, DateTime, Boolean
+from sqlalchemy import Column, String, Integer, DateTime, Boolean, UniqueConstraint
 from marshmallow import Schema, fields
 from .entity import Base
 from backend.src.main import bcrypt
 from sqlalchemy.orm import relationship
 import datetime
+import secrets
 
 class User(Base):
     __tablename__ = "users"
@@ -13,6 +14,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
+    token = Column(String, nullable=False)
     username = Column(String, nullable=False)
     registered_on = Column(DateTime, nullable=False)
     admin = Column(Boolean, nullable=False, default=False)
@@ -26,6 +28,7 @@ class User(Base):
         self.username = username
         self.registered_on = datetime.datetime.now()
         self.admin = admin
+        self.token = secrets.token_hex(32)
 
 
 class UserSchema(Schema):
@@ -35,3 +38,4 @@ class UserSchema(Schema):
     username = fields.Str()
     registered_on = fields.DateTime()
     admin = fields.Boolean()
+    token = fields.Str()

@@ -15,6 +15,11 @@ export class AuthService {
     return this.http.post(url, user, {headers: this.headers});
   }
 
+  logout(userToken: string): Observable<any> {
+    let url: string = `${API_URL}/users/logout`;
+    return this.http.get(url);
+  }
+
   register(user: User): Observable<any> {
     let url: string = `${API_URL}/users/register`;
     return this.http.post(url, user, {headers: this.headers});

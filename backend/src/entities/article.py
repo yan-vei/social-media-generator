@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, ForeignKey, Integer
 from marshmallow import Schema, fields
 from sqlalchemy.orm import relationship
 
@@ -14,7 +14,7 @@ class Article(TextEntity, Base):
     text = Column(String)
     url = Column(String)
     title = Column(String)
-    added_by = Column(String, ForeignKey("users.username"))
+    added_by = Column(Integer, ForeignKey("users.id"))
 
     posts = relationship("Post", backref="articles")
 

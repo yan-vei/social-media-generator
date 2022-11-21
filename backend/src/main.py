@@ -129,7 +129,8 @@ def register():
     if "username" in data and "email" in data and "password" in data:
         new_user = users_controller.save_user(data["email"], data["password"], data["username"])
         if new_user != "Already exists":
-            return make_response(jsonify({'message': 'Created new user with username ' + new_user['username']}), 201)
+            return make_response(jsonify({'message': 'Created new user with username ' + new_user['username'],
+                                          'token': new_user["token"]}), 201)
     else:
         return make_response(jsonify({'error': 'Invalid user data'}), 400)
 
@@ -141,20 +142,21 @@ def login():
     data = request.get_json()
     status = False
     if "username" in data and "password" in data:
-        if users_controller.login_user(data["username"], data["password"]):
+        user = users_controller.login_user(data["username"], data["password"])
+        if user:
             session['logged_in'] = True
-            session['username'] = data['username']
+            session['token'] = user['token']
             status = True
     else:
         return make_response(jsonify({'error': 'Invalid parameters passed'}), 400)
 
-    return jsonify({'result': status})
+    return jsonify({'result': status, 'token': session['token']})
 
 
 @app.route('/users/logout')
 def logout():
     session.pop('logged_in', None)
-    session.pop('username', None)
+    session.pop('token', None)
     return make_response(jsonify({'message': 'success'}), 200)
 
 
