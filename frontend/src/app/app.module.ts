@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { GeneratorComponent } from './components/generator/generator.component';
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { TweetsComponent } from './components/tweets/tweets.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { TweetsComponent } from './components/tweets/tweets.component';
     HomeComponent,
     GeneratorComponent,
     TweetsComponent,
+    SidebarComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import { TweetsComponent } from './components/tweets/tweets.component';
       { path: '', component: HomeComponent},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent},
-      { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]}
+      { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]},
+      { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]}
     ])
   ],
   providers: [
