@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from routes import articles_routes, text_extracts_routes, posts_routes, hashtags_routes
 from backend.src.entities.entity import engine, Base
 from services import text_preprocessor
-from controllers import hashtags_controller, articles_controller, posts_controller, text_extracts_controller, users_controller
+from controllers import articles_extracts_users_controller, hashtags_controller, articles_controller, posts_controller, text_extracts_controller, users_controller
 from getters import get_source, get_title, get_hashtags, get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
 import template_engine
 
@@ -46,6 +46,8 @@ def generate_post():
                 posts.insert(0, template_engine.definition)
                 hashtags = hashtags_controller.get_hashtags_by_article_id(article['id'])
 
+                articles_extracts_users_controller.save_article_and_user(1, article['id'])
+
                 result = {}
                 result["tweets"] = posts
                 result["hashtags"] = [get_hashtags.definition]
@@ -67,6 +69,7 @@ def generate_post():
         data["Title"] = get_title.get_title(data["soup"], data["FirstSentence"])
 
         new_article = articles_controller.save_article(data["text"], data["url"], data["Title"][1]["result"], added_by=1)
+        articles_extracts_users_controller.save_article_and_user(1, new_article['id'])
         new_article_id = new_article['id']
 
     elif "text" in data and "title" in data and "source" in data:
@@ -78,6 +81,8 @@ def generate_post():
                 posts = posts_controller.get_posts_by_text_extract_id(text_extract['id'])
                 posts.insert(0, template_engine.definition)
                 hashtags = hashtags_controller.get_hashtags_by_text_extract_id(text_extract['id'])
+
+                articles_extracts_users_controller.save_text_extracts_and_user(1, text_extract['id'])
 
                 result = {}
                 result["tweets"] = posts
@@ -91,6 +96,7 @@ def generate_post():
         data["SOURCE"] = get_source.get_source(data["source"])
 
         new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], added_by=1)
+        articles_extracts_users_controller.save_text_extracts_and_user(1, new_text_extract['id'])
         new_text_extract_id = new_text_extract['id']
 
     else:

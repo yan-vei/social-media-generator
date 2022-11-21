@@ -16,6 +16,7 @@ class TextExtract(TextEntity, Base):
     added_by = Column(Integer, ForeignKey("users.id"))
 
     posts = relationship("Post", backref="text_extracts")
+    users = relationship("TextExtractsAndUsers", backref="text_extracts_and_users")
 
     def __init__(self, text, title, added_by):
         TextEntity.__init__(self)
@@ -28,5 +29,5 @@ class TextExtractSchema(Schema):
     id = fields.Number()
     title = fields.Str()
     text = fields.Str()
-    added_by = fields.Str()
+    added_by = fields.Number()
     added_at = fields.Str()
