@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Post } from '../entities/post.model';
 import { RequestDataText, RequestDataUrl } from '../entities/request-data.model';
 import {API_URL} from '../env';
 

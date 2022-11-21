@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import {API_URL} from '../env';
 import {Article} from '../entities/article.model';
+import { Post } from '../entities/post.model';
 
 @Injectable()
 export class ArticleService {
@@ -16,5 +17,11 @@ export class ArticleService {
   getArticles(): Observable<Article[]> {
     let url: string = `${API_URL}/articles`
     return this.http.get<Article[]>(url, {headers: this.headers});
+  }
+
+  getArticlePosts(id: number): Observable<Post[]>
+  {
+    let url: string = `${API_URL}/posts-by-article?id=${id}`
+    return this.http.get<Post[]>(url, {headers: this.headers});
   }
 }
