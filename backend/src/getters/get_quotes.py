@@ -21,7 +21,7 @@ NAME_PATTERN = re.compile("[A-Z][a-z]{2,25} (?:[a-z]{0,4}\s{0,1}){0,2}[A-Z][a-z]
 SHORT_NAME_PATTERN = re.compile("[A-Z][a-z]{2,25}")
 
 
-with open('data/verb_markers.json', 'r') as json_file:
+with open('data/verb-markers.json', 'r') as json_file:
     verb_markers = json.load(json_file)
 
 
