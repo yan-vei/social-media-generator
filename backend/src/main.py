@@ -212,7 +212,10 @@ def check_admin():
 
     user = users_controller.get_user_by_token(token)
 
-    return make_response(jsonify({"is_admin": user['admin']}), 200)
+    if user['admin']:
+        return make_response(jsonify({"message": "The user is an admin."}), 200)
+    else:
+        return make_response(jsonify({"message": "The user is not an admin"}), 401)
 
 
 if __name__ == '__main__':

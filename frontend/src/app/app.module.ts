@@ -18,6 +18,7 @@ import { TextService } from './services/text.service';
 import { GeneratorService } from './services/generator.service';
 import { LogoutService } from './services/logout.service';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { EnsureAdmin } from './services/ensure-admin.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
       { path: 'register', component: RegisterComponent},
       { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]},
       { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]},
-      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated]}
+      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]}
     ])
   ],
   providers: [
@@ -49,7 +50,8 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
     TextService,
     GeneratorService,
     LogoutService,
-    EnsureAuthenticated
+    EnsureAuthenticated,
+    EnsureAdmin
   ],
   bootstrap: [AppComponent]
 })
