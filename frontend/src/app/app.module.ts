@@ -17,6 +17,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { TextService } from './services/text.service';
 import { GeneratorService } from './services/generator.service';
 import { LogoutService } from './services/logout.service';
+import { CallsToActionComponent } from './components/admin/calls-to-action/calls-to-action.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LogoutService } from './services/logout.service';
     TweetsComponent,
     SidebarComponent,
     HistoryComponent,
+    CallsToActionComponent,
   ],
   imports: [
     BrowserModule,
