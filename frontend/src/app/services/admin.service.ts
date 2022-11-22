@@ -12,7 +12,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   exportFile(file: string) {
-    let url: string = `${API_URL}/${file}`
+    let url: string = `${API_URL}/configs?filename=${file}.json`
     return this.http.get(url, {responseType: 'blob'});
   }
 
@@ -22,7 +22,7 @@ export class AdminService {
 
   uploadFile(file: File): Observable<any> {
     let path: string = file.name.split(".")[0]
-    let url: string = `${API_URL}/${path}`
+    let url: string = `${API_URL}/configs`
 
     const formData = new FormData();
 
