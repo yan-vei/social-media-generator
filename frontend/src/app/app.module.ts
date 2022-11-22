@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
@@ -35,6 +36,7 @@ import { EnsureAdmin } from './services/ensure-admin.service';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TooltipModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'login', component: LoginComponent },

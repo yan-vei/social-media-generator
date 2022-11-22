@@ -12,12 +12,12 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   exportFile(file: string) {
-    let url: string = `${API_URL}/configs?filename=${file}.json`
+    let url: string = `${API_URL}/configs?filename=${file}`
     return this.http.get(url, {responseType: 'blob'});
   }
 
   exportJson(file: string) {
-    this.exportFile(file).subscribe(data => saveAs(data, `${file}.json`));
+    this.exportFile(file).subscribe(data => saveAs(data, `${file}`));
   }
 
   uploadFile(file: File): Observable<any> {
