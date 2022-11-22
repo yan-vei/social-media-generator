@@ -17,7 +17,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { TextService } from './services/text.service';
 import { GeneratorService } from './services/generator.service';
 import { LogoutService } from './services/logout.service';
-import { CallsToActionComponent } from './components/admin/calls-to-action/calls-to-action.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,7 @@ import { CallsToActionComponent } from './components/admin/calls-to-action/calls
     GeneratorComponent,
     TweetsComponent,
     SidebarComponent,
-    HistoryComponent,
-    CallsToActionComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +39,8 @@ import { CallsToActionComponent } from './components/admin/calls-to-action/calls
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent},
       { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]},
-      { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]}
+      { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]},
+      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated]}
     ])
   ],
   providers: [

@@ -1,5 +1,5 @@
 <div>
-  <h2>Calls to action</h2>
-  <input type="file" class="file-upload" onchange="console.log(event.target.files)">
-  <button>Download Calls to Action</button>
+  <h2>Shortenings</h2>
+  <input type="file" class="shorteningsFile" onchange="console.log(event.target.files)">
+  <button (click)="this.adminService.exportJson('shortenings')">Download Shortenings</button>
 </div>
