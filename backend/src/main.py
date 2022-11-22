@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request, make_response, session
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from bs4 import BeautifulSoup
-from routes import articles_routes, text_extracts_routes, posts_routes, hashtags_routes
+from routes import articles_routes, text_extracts_routes, posts_routes, hashtags_routes, admin_routes
 from backend.src.entities.entity import engine, Base
 from services import text_preprocessor
 from controllers import articles_extracts_users_controller, hashtags_controller, articles_controller, posts_controller, text_extracts_controller, users_controller
@@ -20,6 +20,7 @@ app.register_blueprint(articles_routes.articles)
 app.register_blueprint(text_extracts_routes.text_extracts)
 app.register_blueprint(posts_routes.posts)
 app.register_blueprint(hashtags_routes.hashtags)
+app.register_blueprint(admin_routes.admin)
 
 @app.route('/posts', methods=['POST'])
 def generate_post():

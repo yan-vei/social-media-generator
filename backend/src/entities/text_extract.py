@@ -11,6 +11,7 @@ from .text_entity import TextEntity
 class TextExtract(TextEntity, Base):
     __tablename__ = 'text_extracts'
 
+    id = Column(Integer, primary_key=True)
     text = Column(String)
     title = Column(String)
     added_by = Column(Integer, ForeignKey("users.id"))

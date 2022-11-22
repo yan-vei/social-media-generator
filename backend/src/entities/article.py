@@ -11,6 +11,7 @@ from .text_entity import TextEntity
 class Article(TextEntity, Base):
     __tablename__ = 'articles'
 
+    id = Column(Integer, primary_key=True)
     text = Column(String)
     url = Column(String)
     title = Column(String)
