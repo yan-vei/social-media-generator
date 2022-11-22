@@ -1,5 +1,6 @@
 <div>
   <h2>Shortenings</h2>
-  <input type="file" class="shorteningsFile" onchange="console.log(event.target.files)">
+  <input type="file" class="shorteningsFile" (change)="this.onFileSelected($event)">
   <button (click)="this.adminService.exportJson('shortenings')">Download Shortenings</button>
+  <button (click)="this.uploadFile()">Upload Shortenings</button>
 </div>
