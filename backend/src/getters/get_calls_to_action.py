@@ -11,7 +11,7 @@ definition = {
 }
 
 
-jsonfile = open('data/calls_to_actions.json')
+jsonfile = open('data/calls-to-actions.json')
 calls_to_action = json.load(jsonfile)
 
 

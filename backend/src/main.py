@@ -203,6 +203,21 @@ def get_text_extracts_history():
     return make_response(jsonify(text_extracts), 200)
 
 
+@app.route('/admin')
+def check_admin():
+    try:
+        token = request.headers['Authorization']
+    except KeyError:
+        return make_response(jsonify({"error": "No user token provided."}), 400)
+
+    user = users_controller.get_user_by_token(token)
+
+    if user['admin']:
+        return make_response(jsonify({"message": "The user is an admin."}), 200)
+    else:
+        return make_response(jsonify({"message": "The user is not an admin"}), 401)
+
+
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
     app.run(debug = True)

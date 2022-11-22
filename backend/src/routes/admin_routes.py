@@ -5,20 +5,22 @@ import os
 admin = Blueprint("admin", __name__)
 
 
-@admin.route('/calls-to-action', methods=['GET', 'POST'])
-def process_calls_to_action():
+@admin.route('/configs', methods=['GET', 'POST'])
+def process_configs():
     cwd = os.getcwd()
     if request.method == 'GET':
         try:
-            path = cwd + + "\\data\\shortenings.json"
+            filename = request.args.get('filename')
+            path = cwd + "\\data\\" + filename
             return send_file(path, as_attachment=True)
         except FileNotFoundError:
             return make_response(jsonify({"message": "File not found"}), 404)
 
     elif request.method == 'POST':
         try:
-            shortenings = request.files["file"]
-            shortenings.save(os.path.join(cwd + "\\data", shortenings.filename))
+            file = request.files["file"]
+            file.save(os.path.join(cwd + "\\data", file.filename))
             return make_response(jsonify({"message": "Settings have been updated."}), 200)
         except Exception:
             return make_response(jsonify({"error": "Something went wrong."}), 500)
+
