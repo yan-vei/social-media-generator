@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
-from backend.src.controllers import text_extracts_controller
+from backend.src.controllers import text_extracts_controller, posts_controller, hashtags_controller, articles_extracts_users_controller
 from backend.src.services import text_extracts_service
 
 
@@ -23,6 +23,9 @@ def save_text_extract():
 def delete_text_extract():
     try:
         id = request.args.get('id')
+        posts_controller.delete_posts_by_text_extract_id(id)
+        hashtags_controller.delete_hashtags_by_text_extract_id(id)
+        articles_extracts_users_controller.delete_by_text_extract_id(id)
         text_extracts_controller.delete_text_extract_by_id(id)
 
         return make_response(jsonify({"status": "success", "message:": "Successfully deleted the text extract with the id " + id}), 200)

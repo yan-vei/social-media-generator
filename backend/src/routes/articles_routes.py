@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
-from backend.src.controllers import articles_controller
+from backend.src.controllers import articles_controller, posts_controller, hashtags_controller, articles_extracts_users_controller
 from backend.src.services import articles_service
 
 articles = Blueprint("articles", __name__)
@@ -9,9 +9,12 @@ articles = Blueprint("articles", __name__)
 def delete_article():
     try:
         id = request.args.get('id')
+        posts_controller.delete_posts_by_article_id(id)
+        hashtags_controller.delete_hashtags_by_article_id(id)
+        articles_extracts_users_controller.delete_by_article_id(id)
         articles_controller.delete_article_by_id(id)
 
-        return make_response(jsonify({"status": "success", "message:": "Successfully deleted the text extract with the id " + id}), 200)
+        return make_response(jsonify({"status": "success", "message:": "Successfully deleted the article with the id " + id}), 200)
 
     except Exception as e:
         return make_response(jsonify({"message": e, "status": "failed"}), 500)

@@ -69,3 +69,23 @@ def delete_hashtags_batch():
 
     session.commit()
     session.close()
+
+
+def delete_hashtags_by_text_extract_id(id):
+    session = Session()
+    session.query(Hashtag).filter_by(text_extract_id=id).delete()
+
+    session.commit()
+    session.close()
+
+    return id
+
+
+def delete_hashtags_by_article_id(id):
+    session = Session()
+    session.query(Hashtag).filter_by(article_id=id).delete()
+
+    session.commit()
+    session.close()
+
+    return id

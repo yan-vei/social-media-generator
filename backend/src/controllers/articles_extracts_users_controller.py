@@ -89,4 +89,24 @@ def get_text_extracts_by_user_id(user_id):
     return text_extracts
 
 
+def delete_by_article_id(id):
+    session = Session()
+    session.query(ArticlesAndUsers).filter_by(article_id=id).delete()
+
+    session.commit()
+    session.close()
+
+    return id
+
+
+def delete_by_text_extract_id(id):
+    session = Session()
+    session.query(TextExtractsAndUsers).filter_by(text_extract_id=id).delete()
+
+    session.commit()
+    session.close()
+
+    return id
+
+
 
