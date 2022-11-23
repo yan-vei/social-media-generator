@@ -15,6 +15,11 @@ export class TextService {
   constructor(private http: HttpClient) {
   }
 
+  getAllTextExtracts(): Observable<TextExtract[]> {
+    let url: string = `${API_URL}/all-text-extracts`
+    return this.http.get<TextExtract[]>(url, {headers: this.headers});
+  }
+
   getTextExtracts(): Observable<TextExtract[]> {
     let url: string = `${API_URL}/text-extracts`
     return this.http.get<TextExtract[]>(url, {headers: this.headers});
@@ -23,5 +28,10 @@ export class TextService {
   getTextExtractsPosts(id: number): Observable<Post[]> {
     let url: string = `${API_URL}/posts-by-text-extract?id=${id}`
     return this.http.get<Post[]>(url, {headers: this.headers});
+  }
+
+  deleteText(id: number): Observable<any> {
+    let url: string = `${API_URL}/text-extracts?id=${id}`
+    return this.http.delete(url)
   }
 }

@@ -14,6 +14,11 @@ export class ArticleService {
   constructor(private http: HttpClient) {
   }
 
+  getAllArticles(): Observable<Article[]> {
+    let url: string = `${API_URL}/all-articles`
+    return this.http.get<Article[]>(url, {headers: this.headers});
+  }
+
   getArticles(): Observable<Article[]> {
     let url: string = `${API_URL}/articles`
     return this.http.get<Article[]>(url, {headers: this.headers});
@@ -24,4 +29,10 @@ export class ArticleService {
     let url: string = `${API_URL}/posts-by-article?id=${id}`
     return this.http.get<Post[]>(url, {headers: this.headers});
   }
+
+  deleteArticle(id: number): Observable<any> {
+    let url: string = `${API_URL}/articles?id=${id}`
+    return this.http.delete(url)
+  }
+
 }
