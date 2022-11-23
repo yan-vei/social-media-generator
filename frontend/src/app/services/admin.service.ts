@@ -29,14 +29,4 @@ export class AdminService {
 
     return this.http.post(url, formData);
   }
-
-  deleteArticle(id: string): Observable<any> {
-    let url: string = `${API_URL}/articles/id?=${id}`
-    return this.http.delete(url)
-  }
-
-  deleteText(id: string): Observable<any> {
-    let url: string = `${API_URL}/text-extracts/id?=${id}`
-    return this.http.delete(url)
-  }
 }

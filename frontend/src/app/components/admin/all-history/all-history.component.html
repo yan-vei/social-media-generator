@@ -1,1 +1,35 @@
-<p>all-history works!</p>
+<h1>All History</h1>
+<button (click)="getAllArticles()">Get Articles</button>
+<button (click)="getAllTexts()">Get Texts</button>
+
+<h2>Articles</h2>
+<div *ngFor="let article of this.articles, index as i">
+  <p>Article id: {{article.id}}</p>
+  <p>Title: {{article.title}}</p>
+  <p>Url: {{article.url}}</p>
+  <p>Text: {{article.text}}</p>
+  <p>Generated at: {{article.added_at}}</p>
+  <button (click)="deleteArticle(article.id, i)">Delete article</button>
+  <button (click)="getArticleTweets(article.id)">Get posts</button>
+
+  <div *ngIf="this.articleTweets">
+    <div *ngFor="let tweet of this.articleTweets">
+      <p>{{ tweet.post }}</p>
+    </div>
+  </div>
+</div>
+
+<h2>Texts</h2>
+<div *ngFor="let text of this.texts; index as i">
+  <p>Title: {{text.title}}</p>
+  <p>Text: {{text.text}}</p>
+  <p>Generated at: {{text.added_at}}</p>
+  <button (click)="deleteText(text.id, i)">Delete text</button>
+  <button (click)="getTextExtractsTweets(text.id)">Get posts</button>
+
+  <div *ngIf="this.textTweets">
+    <div *ngFor="let tweet of this.textTweets">
+      <p>{{ tweet.post }}</p>
+    </div>
+  </div>
+</div>
