@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable} from 'rxjs';
 import {API_URL} from '../env';
 import {saveAs} from 'file-saver'
 
@@ -21,7 +21,6 @@ export class AdminService {
   }
 
   uploadFile(file: File): Observable<any> {
-    let path: string = file.name.split(".")[0]
     let url: string = `${API_URL}/configs`
 
     const formData = new FormData();
@@ -29,5 +28,15 @@ export class AdminService {
     formData.append("file", file);
 
     return this.http.post(url, formData);
+  }
+
+  deleteArticle(id: string): Observable<any> {
+    let url: string = `${API_URL}/articles/id?=${id}`
+    return this.http.delete(url)
+  }
+
+  deleteText(id: string): Observable<any> {
+    let url: string = `${API_URL}/text-extracts/id?=${id}`
+    return this.http.delete(url)
   }
 }

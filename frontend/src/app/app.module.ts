@@ -20,6 +20,8 @@ import { GeneratorService } from './services/generator.service';
 import { LogoutService } from './services/logout.service';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { EnsureAdmin } from './services/ensure-admin.service';
+import { AllHistoryComponent } from './components/admin/all-history/all-history.component';
+import { ConfigurationComponent } from './components/admin/configuration/configuration.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,10 @@ import { EnsureAdmin } from './services/ensure-admin.service';
     GeneratorComponent,
     TweetsComponent,
     SidebarComponent,
-    HistoryComponent
+    HistoryComponent,
+    AllHistoryComponent,
+    ConfigurationComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,9 @@ import { EnsureAdmin } from './services/ensure-admin.service';
       { path: 'register', component: RegisterComponent},
       { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]},
       { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]},
-      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]}
+      { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
+      { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
+      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
     ])
   ],
   providers: [
