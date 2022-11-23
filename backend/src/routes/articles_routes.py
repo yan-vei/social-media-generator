@@ -5,6 +5,12 @@ from backend.src.services import articles_service
 
 articles = Blueprint("articles", __name__)
 
+@articles.route('/all-articles')
+def get_all_articles():
+    articles = articles_controller.get_articles()
+
+    return make_response(jsonify(articles), 200)
+
 @articles.route('/articles', methods=['DELETE'])
 def delete_article():
     try:

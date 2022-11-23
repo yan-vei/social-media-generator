@@ -7,6 +7,13 @@ from backend.src.services import text_extracts_service
 text_extracts = Blueprint("text_extracts", __name__)
 
 
+@text_extracts.route('/all-text-extracts')
+def get_text_extracts():
+    text_extracts = text_extracts_controller.get_text_extracts()
+
+    return make_response(jsonify(text_extracts), 200)
+
+
 @text_extracts.route('/text-extracts', methods=['POST'])
 def save_text_extract():
     try:
