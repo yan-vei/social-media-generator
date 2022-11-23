@@ -27,6 +27,25 @@ def get_posts():
     return posts
 
 
+def delete_posts_by_article_id(id):
+    session = Session()
+    session.query(Post).filter_by(article_id=id).delete()
+
+    session.commit()
+    session.close()
+
+    return id
+
+
+def delete_posts_by_text_extract_id(id):
+    session = Session()
+    session.query(Post).filter_by(text_extract_id=id).delete()
+
+    session.commit()
+    session.close()
+
+    return id
+
 def get_posts_by_article_id(id):
     session = Session()
     posts_objects = session.query(Post).with_entities(Post.post, Post.template, Post.length, Post.notes, Post.score).filter_by(article_id=id)
