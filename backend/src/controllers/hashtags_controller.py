@@ -1,5 +1,5 @@
-from backend.src.entities.hashtag import Hashtag, HashtagSchema
-from backend.src.entities.entity import Session
+from entities.hashtag import Hashtag, HashtagSchema
+from entities.entity import Session
 
 
 def save_hashtag(article_id, text_extract_id, hashtag, score):

@@ -1,6 +1,6 @@
-from backend.src.entities.articles_and_users import ArticlesAndUsersSchema, ArticlesAndUsers
-from backend.src.entities.text_extracts_and_users import  TextExtractsAndUsersSchema, TextExtractsAndUsers
-from backend.src.entities.entity import Session
+from entities.articles_and_users import ArticlesAndUsersSchema, ArticlesAndUsers
+from entities.text_extracts_and_users import  TextExtractsAndUsersSchema, TextExtractsAndUsers
+from entities.entity import Session
 
 
 def save_article_and_user(user_id, article_id):

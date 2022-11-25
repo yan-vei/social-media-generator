@@ -1,6 +1,7 @@
 import re
 import json
-import tweet_shortner
+from tweet_shortner import *
+import os
 
 definition = {
         "type": "templateEngine",
@@ -23,7 +24,9 @@ definition = {
 
 
 global templates
-jsonFile = open('data/templates.json', encoding='utf-8')
+dirname = os.getcwd()
+filepath = os.path.join(dirname, 'data\\templates.json')
+jsonFile = open(filepath, encoding='utf-8')
 templates = json.load(jsonFile)
 jsonFile.close()
 tweetbook = [definition]
@@ -64,7 +67,7 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
             tagdata = block[detail]
             if lengthlimit > 0:
                 if len(tagdata) > lengthlimit:
-                    tagdata = tweet_shortner.send_to_shorten(tagdata, lengthlimit)
+                    tagdata = send_to_shorten(tagdata, lengthlimit)
 
             if getter == 'URL' and detail == 'url':
                 lengthoffset += len(tagdata) - int(definition["TweetURLLength"])
@@ -97,7 +100,7 @@ def generate_tweets(text, template, score, depth, notes, lengthoffset, block_emo
 
             # Tweet shortening
             if tweetLength > int(definition['TweetLength']):
-                tweet = tweet_shortner.send_to_shorten(tweet, definition['TweetLength'], lengthoffset)
+                tweet = send_to_shorten(tweet, definition['TweetLength'], lengthoffset)
                 tweetLength = (int(len(tweet) - lengthoffset)) + template_emoji + block_emojies # check again after shortening
 
             if tweetLength > int(definition['Tweet Fail Length']):

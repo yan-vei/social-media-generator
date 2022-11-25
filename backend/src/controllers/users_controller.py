@@ -1,6 +1,6 @@
-from backend.src.entities.user import User, UserSchema
-from backend.src.entities.entity import Session
-from backend.src.main import bcrypt
+from entities.user import User, UserSchema
+from entities.entity import Session
+from main import bcrypt
 
 
 def save_user(email, password, username):

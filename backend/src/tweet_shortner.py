@@ -1,9 +1,12 @@
 import json
 import re
+import os
 
 
 global shortenings
-jsonFile = open('data/shortenings.json', encoding='utf-8')
+dirname = os.getcwd()
+filepath = os.path.join(dirname, 'data\\shortenings.json')
+jsonFile = open(filepath, encoding='utf-8')
 shortenings = json.load(jsonFile)
 jsonFile.close()
 

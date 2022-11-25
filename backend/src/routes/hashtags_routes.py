@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
-from backend.src.controllers import  hashtags_controller
+from controllers import  hashtags_controller
 
 hashtags = Blueprint("hashtags", __name__)
 

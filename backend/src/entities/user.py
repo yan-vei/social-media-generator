@@ -3,7 +3,7 @@
 from sqlalchemy import Column, String, Integer, DateTime, Boolean, UniqueConstraint
 from marshmallow import Schema, fields
 from .entity import Base
-from backend.src.main import bcrypt
+from main import bcrypt
 from sqlalchemy.orm import relationship
 import datetime
 import secrets
