@@ -9,6 +9,8 @@ services:
       ./.env
     ports:
       - 5000:5000
+    expose:
+      - "5000"
     depends_on:
       - db
     networks:
