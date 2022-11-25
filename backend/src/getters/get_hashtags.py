@@ -1,6 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 import os
+
 from services.text_preprocessor import load_stopwords
 
 definition = {
@@ -35,7 +36,7 @@ def extract_topn_from_vector(feature_names, sorted_items, topn):
 
 
 def get_hashtags(text):
-    path = os.getcwd() + '\\data\\stopwords.txt'
+    path = os.getcwd() + main.SLASH + 'data' + main.SLASH + 'stopwords.txt'
     stop_words = load_stopwords(path)
 
     cv = CountVectorizer(stop_words=stop_words)

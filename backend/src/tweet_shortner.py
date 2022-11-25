@@ -2,10 +2,11 @@ import json
 import re
 import os
 
+from utils.check_os import SLASH
 
 global shortenings
 dirname = os.getcwd()
-filepath = os.path.join(dirname, 'data\\shortenings.json')
+filepath = os.path.join(dirname, 'data' + SLASH + 'shortenings.json')
 jsonFile = open(filepath, encoding='utf-8')
 shortenings = json.load(jsonFile)
 jsonFile.close()

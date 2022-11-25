@@ -1,6 +1,6 @@
 from entities.user import User, UserSchema
 from entities.entity import Session
-from main import bcrypt
+import __main__ as main
 
 
 def save_user(email, password, username):
@@ -23,7 +23,7 @@ def save_user(email, password, username):
 def login_user(username, password):
     session = Session()
     user = session.query(User).filter_by(username=username).first()
-    if user and bcrypt.check_password_hash(user.password, password):
+    if user and main.bcrypt.check_password_hash(user.password, password):
         return UserSchema().dump(user)
     return False
 

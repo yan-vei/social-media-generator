@@ -21,5 +21,5 @@ def process_configs():
             file = request.files["file"]
             file.save(os.path.join(cwd + "\\data", file.filename))
             return make_response(jsonify({"message": "Settings have been updated."}), 200)
-        except Exception:
-            return make_response(jsonify({"error": "Something went wrong."}), 500)
+        except Exception as e:
+            return make_response(jsonify({"error": "Something went wrong.", "ex": str(e)}), 500)

@@ -1,6 +1,8 @@
 import json
 import os
 
+from utils.check_os import SLASH
+
 definition = {
     'type': 'AlwaysValidCTAs',
     'description': 'Supply all the always valid CTAs for the templateEngine along with topics, emojies, hashtags, etc.',
@@ -12,7 +14,7 @@ definition = {
 
 
 dirname = os.getcwd()
-filepath = os.path.join(dirname, 'data\\calls-to-actions.json')
+filepath = os.path.join(dirname, 'data' + SLASH + 'calls-to-actions.json')
 jsonfile = open(filepath)
 calls_to_action = json.load(jsonfile)
 
