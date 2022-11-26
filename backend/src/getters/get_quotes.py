@@ -2,6 +2,7 @@ import json
 from services import emoji_counter
 import re
 import os
+from utils.check_os import SLASH
 
 definition = {
     'type': 'Quotes',
@@ -21,7 +22,7 @@ NAME_PATTERN = re.compile("[A-Z][a-z]{2,25} (?:[a-z]{0,4}\s{0,1}){0,2}[A-Z][a-z]
 SHORT_NAME_PATTERN = re.compile("[A-Z][a-z]{2,25}")
 
 dirname = os.getcwd()
-filepath = os.path.join(dirname, 'data\\verb-markers.json')
+filepath = os.path.join(dirname, 'data' + SLASH + 'verb-markers.json')
 with open(filepath, 'r') as json_file:
     verb_markers = json.load(json_file)
 
