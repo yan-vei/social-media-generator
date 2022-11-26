@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 import os
-from backend.src.services.text_preprocessor import load_stopwords
+from services.text_preprocessor import load_stopwords
 
 definition = {
     'type': 'Hashtags',

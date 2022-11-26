@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
-from backend.src.controllers import text_extracts_controller, posts_controller, hashtags_controller, articles_extracts_users_controller
-from backend.src.services import text_extracts_service
+from controllers import text_extracts_controller, posts_controller, hashtags_controller, articles_extracts_users_controller
+from services import text_extracts_service
 
 
 text_extracts = Blueprint("text_extracts", __name__)

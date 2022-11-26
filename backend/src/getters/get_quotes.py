@@ -1,7 +1,7 @@
 import json
-from backend.src.services import emoji_counter
+from services import emoji_counter
 import re
-
+import os
 
 definition = {
     'type': 'Quotes',
@@ -20,8 +20,9 @@ QUOTES_PATTERN = [re.compile('("[A-Z0-9].+[.,?!]")'), re.compile("('[A-Z0-9].+[.
 NAME_PATTERN = re.compile("[A-Z][a-z]{2,25} (?:[a-z]{0,4}\s{0,1}){0,2}[A-Z][a-z]{2,25}")
 SHORT_NAME_PATTERN = re.compile("[A-Z][a-z]{2,25}")
 
-
-with open('data/verb-markers.json', 'r') as json_file:
+dirname = os.getcwd()
+filepath = os.path.join(dirname, 'data\\verb-markers.json')
+with open(filepath, 'r') as json_file:
     verb_markers = json.load(json_file)
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import jsonify, make_response, request
-from backend.src.controllers import posts_controller
+from controllers import posts_controller
 
 posts = Blueprint("posts", __name__)
 

@@ -1,5 +1,5 @@
-from backend.src.entities.post import Post, PostSchema
-from backend.src.entities.entity import Session
+from entities.post import Post, PostSchema
+from entities.entity import Session
 
 
 def save_post(post, score, length, notes, template, article_id, text_extract_id,):

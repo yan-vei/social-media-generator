@@ -1,4 +1,4 @@
-from backend.src.entities.article import ArticleSchema
+from entities.article import ArticleSchema
 
 def validate_schema(request):
     try:

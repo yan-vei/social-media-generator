@@ -1,4 +1,4 @@
-from backend.src.entities.text_extract import TextExtractSchema
+from entities.text_extract import TextExtractSchema
 
 
 def validate_schema(request):

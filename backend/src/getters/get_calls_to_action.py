@@ -1,5 +1,5 @@
 import json
-
+import os
 
 definition = {
     'type': 'AlwaysValidCTAs',
@@ -11,7 +11,9 @@ definition = {
 }
 
 
-jsonfile = open('data/calls-to-actions.json')
+dirname = os.getcwd()
+filepath = os.path.join(dirname, 'data\\calls-to-actions.json')
+jsonfile = open(filepath)
 calls_to_action = json.load(jsonfile)
 
 

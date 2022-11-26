@@ -1,4 +1,4 @@
-from backend.src.entities.post import PostSchema
+from entities.post import PostSchema
 
 
 def validate_schema(request):

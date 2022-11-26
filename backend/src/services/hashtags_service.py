@@ -1,4 +1,4 @@
-from backend.src.entities.hashtag import HashtagSchema
+from entities.hashtag import HashtagSchema
 
 
 def validate_schema(request):

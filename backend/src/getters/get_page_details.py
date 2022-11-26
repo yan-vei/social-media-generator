@@ -1,4 +1,4 @@
-from backend.src.services import emoji_counter
+from services import emoji_counter
 
 definition = {
     'type': 'Page',
