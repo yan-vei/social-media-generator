@@ -1,33 +1,54 @@
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet"
-  data-size="large"
-  data-text="custom share text"
-  data-url="https://dev.twitter.com/web/tweet-button"
-  data-hashtags="example,demo"
-  target="_blank">
-Tweet
-</a>
-
+<div style="text-align: center">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Tweet Generator</h1>
+    </div>
+  </div>
 <form [formGroup]="urlForm">
 
-  <label for="url">Insert URL: </label>
-  <input id="url" type="text" formControlName="url">
+  <div class="row">
+    <div class="col-sm-11" style="margin: 1em 1em 0em 0em;">
+      <label for="url" style="margin: 1em;">Insert URL: </label>
+      <input style="width: 30%;" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="url" type="text" formControlName="url">
+    </div>
+  </div>
 
 </form>
+<div class="row">
+  <div class="col-sm-12" style="margin: 0em 1em 0em 0em;">
+    <h1>OR</h1>
+  </div>
+</div>
 
-<h1>OR</h1>
 
 <form [formGroup]="textForm">
 
-  <label for="title">Insert title: </label>
-  <input id="title" type="text" formControlName="title">
-
-  <label for="text">Insert text: </label>
-  <input id="text" type="text" formControlName="text">
+  <div class="row">
+    <div class="col-sm-11">
+      <label for="title" style="margin: 1em 1em 1em 1em;">Insert title: </label>
+      <input style="width: 30%;" id="title" type="text" formControlName="title">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-11">
+      <label for="title" style="margin: 1em 1em 1em 1em; vertical-align: top;">Insert text: </label>
+      <textarea style="width: 30%; height: 400%" id="text" type="text" formControlName="text"></textarea>
+    </div>
+  </div>
 
 </form>
 
-<p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!urlForm.valid && textForm.valid" (click)="generateTweets()">Submit</button>
+<div class="row" style="margin: 12em">
+    <div class="col-sm-12">
+      <p style="margin: 1em 0em 1em 0em;">Insert a link or a text with a title to enable button.</p>
+    </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary" [disabled]="!urlForm.valid && textForm.valid" (click)="generateTweets()">Generate Tweets</button>
+      </div>
+  </div>
+</div>
 
+</div>
 <tweets [generatedTweets]="generatedTweets" [generatedHashtags]="generatedHashtags"></tweets>
+

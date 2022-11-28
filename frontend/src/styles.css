@@ -1,8 +1,14 @@
 body{
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .h1 .h2 .h3 .label {
-  font-family: "Gill Sans", sans-serif
+  font-family: "Gill Sans", sans-serif;
+  color: white
+}
+
+input:focus {
+  outline: none;
 }
