@@ -1,4 +1,10 @@
 a {
   display: block;
+  margin: 2em 1em 1em 1em;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
 }
 
+div {
+}
