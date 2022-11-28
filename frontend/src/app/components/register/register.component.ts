@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
 
   token: string = 'user_token';
+  errorMessage: string;
 
   profileForm = this.fb.group({
     username: [, Validators.required],
@@ -36,7 +37,15 @@ export class RegisterComponent implements OnInit {
     .subscribe((user) =>
     {
       localStorage.setItem(this.token, user['token']);
-    })
+      this.router.navigate(['/generator']);
+    },
+    (err) =>
+    {
+      this.errorMessage = err.error['error'];
+      console.log(err)
+    }
+
+    )
   }
 
 }

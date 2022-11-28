@@ -1,8 +1,9 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from utils.check_os import POSTGRES_URL
 
-db_url = 'localhost:5432'
+db_url = f'{POSTGRES_URL}:5432'
 db_name = 'social-media-generator'
 db_user = 'postgres'
 db_password = 's0cial-media-generator'

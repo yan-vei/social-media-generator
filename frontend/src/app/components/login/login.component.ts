@@ -11,6 +11,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   token: string = 'user_token';
+  errorMessage: string;
 
   profileForm = this.fb.group({
     username: [, Validators.required],
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
     },
     (err) =>
     {
+      this.errorMessage = err.error['error'];
       console.log(err);
     })
   }

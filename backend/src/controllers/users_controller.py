@@ -1,6 +1,6 @@
 from entities.user import User, UserSchema
 from entities.entity import Session
-from main import bcrypt
+import __main__ as main
 
 
 def save_user(email, password, username):
@@ -8,11 +8,8 @@ def save_user(email, password, username):
 
     session = Session()
 
-    try:
-        session.add(user)
-        session.commit()
-    except:
-        return "Already exists"
+    session.add(user)
+    session.commit()
 
     new_user = UserSchema().dump(user)
     session.close()
@@ -20,11 +17,20 @@ def save_user(email, password, username):
     return new_user
 
 
+def already_exists(username, email):
+    session = Session()
+    if session.query(User).filter_by(username=username).first() or session.query(User).filter_by(email=email).first():
+        return True
+    return False
+
+
 def login_user(username, password):
     session = Session()
     user = session.query(User).filter_by(username=username).first()
-    if user and bcrypt.check_password_hash(user.password, password):
+    if user and main.bcrypt.check_password_hash(user.password, password):
+        session.close()
         return UserSchema().dump(user)
+    session.close()
     return False
 
 
@@ -40,3 +46,11 @@ def delete_users_batch():
 
     session.commit()
     session.close()
+
+
+def get_all_users():
+    session = Session()
+    users = session.query(User).all()
+    all_users = UserSchema(many=True).dump(users)
+    session.close()
+    return all_users

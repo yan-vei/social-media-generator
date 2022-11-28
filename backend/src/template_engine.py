@@ -1,7 +1,10 @@
 import re
 import json
+
 from tweet_shortner import *
 import os
+
+from utils.check_os import SLASH
 
 definition = {
         "type": "templateEngine",
@@ -25,7 +28,7 @@ definition = {
 
 global templates
 dirname = os.getcwd()
-filepath = os.path.join(dirname, 'data\\templates.json')
+filepath = os.path.join(dirname, 'data' + SLASH + 'templates.json')
 jsonFile = open(filepath, encoding='utf-8')
 templates = json.load(jsonFile)
 jsonFile.close()

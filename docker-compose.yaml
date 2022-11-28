@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    expose:
+      - "5000"
+    depends_on:
+      - db
+    networks:
+      - api-db
+  db:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=s0cial-media-generator
+      - POSTGRES_DB=social-media-generator
+    ports:
+      - 5432:5432
+    networks:
+      - api-db
+  ui:
+    build:
+      context: ./frontend
+      target: builder
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    volumes:
+      - '.:/src'
+      - '/node_modules'
+    networks:
+      - api-db
+
+networks:
+  api-db:
+    driver: bridge

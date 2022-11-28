@@ -7,6 +7,6 @@
   <input id="password" type="text" formControlName="password">
 
 </form>
-
+<p *ngIf="this.errorMessage" style="color: red;">{{ errorMessage }}</p>
 <p>Complete the form to enable button.</p>
 <button type="submit" [disabled]="!profileForm.valid" (click)="onLogin()">Submit</button>

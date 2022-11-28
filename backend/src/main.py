@@ -127,30 +127,31 @@ def generate_post():
 def register():
     data = request.get_json()
     if "username" in data and "email" in data and "password" in data:
+        if users_controller.already_exists(data['username'], data['email']):
+            return make_response(jsonify({'error': 'User with such username or email already exists.'}), 400)
+
         new_user = users_controller.save_user(data["email"], data["password"], data["username"])
-        if new_user != "Already exists":
-            return make_response(jsonify({'message': 'Created new user with username ' + new_user['username'],
+        return make_response(jsonify({'message': 'Created new user with username ' + new_user['username'],
                                           'token': new_user["token"]}), 201)
     else:
-        return make_response(jsonify({'error': 'Invalid user data'}), 400)
-
-    return make_response(jsonify({'message': 'User already exists'}), 200)
+        return make_response(jsonify({'error': 'Invalid user data passed.'}), 400)
 
 
 @app.route('/users/login', methods=['POST'])
 def login():
     data = request.get_json()
-    status = False
+
     if "username" in data and "password" in data:
         user = users_controller.login_user(data["username"], data["password"])
         if user:
             session['logged_in'] = True
             session['token'] = user['token']
             status = True
+            return jsonify({'result': status, 'token': session['token']})
+        else:
+            return make_response(jsonify({'error': 'Invalid username or password were passed.'}), 400)
     else:
-        return make_response(jsonify({'error': 'Invalid parameters passed'}), 400)
-
-    return jsonify({'result': status, 'token': session['token']})
+        return jsonify({'error': 'Incorrect parameters were passed.'}, 400)
 
 
 @app.route('/users/logout')
@@ -158,15 +159,6 @@ def logout():
     session.pop('logged_in', None)
     session.pop('token', None)
     return make_response(jsonify({'message': 'success'}), 200)
-
-
-@app.route('/users/status')
-def status():
-    if session.get('logged_in'):
-        if session['logged_in']:
-            return make_response(jsonify({'message': 'success'}), 200)
-    else:
-        return make_response(jsonify({'message': 'failed'}), 500)
 
 
 @app.route('/articles')
@@ -220,4 +212,4 @@ def check_admin():
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
-    app.run(debug = True)
+    app.run(debug = True, host='0.0.0.0')

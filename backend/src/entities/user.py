@@ -3,10 +3,11 @@
 from sqlalchemy import Column, String, Integer, DateTime, Boolean, UniqueConstraint
 from marshmallow import Schema, fields
 from .entity import Base
-from main import bcrypt
+import __main__ as main
 from sqlalchemy.orm import relationship
 import datetime
 import secrets
+
 
 class User(Base):
     __tablename__ = "users"
@@ -26,7 +27,7 @@ class User(Base):
 
     def __init__(self, email, password, username, admin=False):
         self.email = email
-        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
+        self.password = main.bcrypt.generate_password_hash(password).decode('utf-8')
         self.username = username
         self.registered_on = datetime.datetime.now()
         self.admin = admin
