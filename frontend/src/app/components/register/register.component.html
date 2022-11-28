@@ -1,15 +1,48 @@
-<form [formGroup]="profileForm">
+<div style="text-align: center">
+  <div class="row">
+    <div class="col-sm-11">
+      <h1>Register</h1>
+    </div>
+  </div>
+  <form [formGroup]="profileForm">
+    <div class="row">
+      <div class="col-sm-11" style="margin: 1em;">
+        <label for="username">Username: </label>
+        <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="username" type="text" formControlName="username" style="margin-left: 1em;">
+      </div>
+    </div>
 
-  <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email">
+    <div class="row">
+      <div class="col-sm-11"></div>
+    </div>
 
-  <label for="username">Username: </label>
-  <input id="username" type="text" formControlName="username">
+    <div class="row">
+      <div class="col-sm-11" style="margin: 1em 1em 1em 2em">
+        <label for="password">Email: </label>
+        <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="password" type="text" formControlName="password" style="margin-left: 1em;">
+      </div>
+    </div>
 
-  <label for="password">Password: </label>
-  <input id="password" type="password" formControlName="password">
+    <div class="row">
+      <div class="col-sm-11" style="margin: 1em">
+        <label for="password">Password: </label>
+        <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="password" type="password" formControlName="password" style="margin-left: 1em;">
+      </div>
+    </div>
 
-</form>
-<p *ngIf="this.errorMessage" style="color: red;">{{ errorMessage }}</p>
-<p>Complete the form to enable button.</p>
-<button type="submit" [disabled]="!profileForm.valid" (click)="onRegister()">Submit</button>
+  </form>
+
+  <div class="row">
+    <div class="col-sm-11">
+      <p *ngIf="this.errorMessage" style="color: red;">{{ errorMessage }}</p>
+      <p>Complete the form to enable button.</p>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-11">
+        <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid" (click)="onRegister()">Submit</button>
+      </div>
+    </div>
+
+</div>
