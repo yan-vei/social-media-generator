@@ -7,8 +7,21 @@ body{
 .h1 .h2 .h3 label span {
   font-family: "Gill Sans", sans-serif;
   color: white
+
 }
 
 input:focus {
   outline: none;
+}
+
+.tweet {
+  border: 1px solid blue;
+  background-color: aliceblue;
+  border-radius: 10%;
+  margin: 5px;
+  padding: 15px;
+}
+
+span {
+  word-wrap: break-word;
 }

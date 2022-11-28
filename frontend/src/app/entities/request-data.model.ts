@@ -7,6 +7,7 @@ export class RequestDataUrl {
 export class RequestDataText {
   constructor(
     public title: string,
-    public text: string
+    public text: string,
+    public source: string
   ) {}
 }

@@ -25,13 +25,19 @@
 
   <div class="row">
     <div class="col-sm-11">
+      <label for="source" style="margin: 1em 1em 1em 0em;">Insert source: </label>
+      <input style="width: 30%;" id="source" type="text" formControlName="source">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-11">
       <label for="title" style="margin: 1em 1em 1em 1em;">Insert title: </label>
       <input style="width: 30%;" id="title" type="text" formControlName="title">
     </div>
   </div>
   <div class="row">
     <div class="col-sm-11">
-      <label for="title" style="margin: 1em 1em 1em 1em; vertical-align: top;">Insert text: </label>
+      <label for="text" style="margin: 1em 1em 1em 1em; vertical-align: top;">Insert text: </label>
       <textarea style="width: 30%; height: 400%" id="text" type="text" formControlName="text"></textarea>
     </div>
   </div>
@@ -40,11 +46,11 @@
 
 <div class="row" style="margin: 12em 0em 0em 1em">
     <div class="col-sm-12">
-      <p style="margin: 1em 0em 1em 0em;">Insert a link or a text with a title to enable button.</p>
+      <p style="margin: 1em 0em 1em 0em;">Insert a link or a text with a title, and a source to enable button.</p>
     </div>
       <div class="row">
         <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary" [disabled]="!urlForm.valid && textForm.valid" (click)="generateTweets()">Generate Tweets</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!urlForm.valid && !textForm.valid" (click)="generateTweets()">Generate Tweets</button>
       </div>
   </div>
 </div>

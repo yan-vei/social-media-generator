@@ -16,11 +16,18 @@ export class HistoryComponent implements OnInit {
   public texts: TextExtract[] = [];
   public textTweets: Post[] = [];
 
+  displayArticles: boolean = true;
+  displayTexts: boolean = true;
+
+  displayArticleTweets: boolean = true;
+  displayTextsTweets: boolean = true;
 
   constructor(private textService: TextService, private articleService: ArticleService) { }
 
   ngOnInit(): void {
   }
+
+
 
   getArticles()
   {
