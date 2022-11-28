@@ -36,7 +36,7 @@ def login_user(username, password):
 
 def get_user_by_token(token):
     session = Session()
-    user = session.query(User).filter_by(token=token).first()
+    user = session.query(User).filter_by(token=str(token)).first()
     return UserSchema().dump(user)
 
 

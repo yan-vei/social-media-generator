@@ -13,6 +13,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class GeneratorComponent implements OnInit {
   public generatedTweets: any = null;
   public generatedHashtags: any = null;
+  public userToken: string;
 
   urlForm = this.fb.group({
     url: [, Validators.required]
@@ -34,7 +35,8 @@ export class GeneratorComponent implements OnInit {
     if (this.urlForm.valid)
     {
       let data = new RequestDataUrl(this.urlForm.controls.url.value || '')
-      this.generatorService.generateTweetsFromUrl(data)
+      this.userToken = localStorage.getItem("user_token") || '';
+      this.generatorService.generateTweetsFromUrl(data, this.userToken)
       .subscribe((tweets) =>
       {
         this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
@@ -48,8 +50,9 @@ export class GeneratorComponent implements OnInit {
 
     else if (this.textForm.valid)
     {
-      let data = new RequestDataText(this.textForm.controls.text.value || '', this.textForm.controls.text.value || '', this.textForm.controls.source.value || '')
-      this.generatorService.generateTweetsFromText(data)
+      let data = new RequestDataText(this.textForm.controls.title.value || '', this.textForm.controls.text.value || '', this.textForm.controls.source.value || '')
+      this.userToken = localStorage.getItem("user_token") || '';
+      this.generatorService.generateTweetsFromText(data, this.userToken)
       .subscribe((tweets) =>
       {
         this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)

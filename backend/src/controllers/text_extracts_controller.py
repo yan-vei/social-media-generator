@@ -2,8 +2,8 @@ from entities.text_extract import TextExtract, TextExtractSchema
 from entities.entity import Session
 
 
-def save_text_extract(text, title, added_by):
-    text_extract = TextExtract(text, title, added_by)
+def save_text_extract(text, title, source, added_by):
+    text_extract = TextExtract(text, title, source, added_by)
 
     session = Session()
     session.add(text_extract)
@@ -23,7 +23,6 @@ def get_text_extracts():
     text_extracts = schema.dump(text_extracts_objects)
 
     session.close()
-
     return text_extracts
 
 

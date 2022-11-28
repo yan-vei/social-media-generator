@@ -9,18 +9,18 @@ import {API_URL} from '../env';
   providedIn: 'root'
 })
 export class GeneratorService {
-  private userToken: string = localStorage.getItem("user_token") || '';
-  private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': this.userToken});
 
   constructor(private http: HttpClient) { }
 
-  generateTweetsFromUrl(data: RequestDataUrl): Observable<any> {
+  generateTweetsFromUrl(data: RequestDataUrl, userToken: string): Observable<any> {
+    let httpHeaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': userToken});
     let url: string = `${API_URL}/posts`;
-    return this.http.post(url, data, {headers: this.headers});
+    return this.http.post(url, data, {headers: httpHeaders});
   }
 
-  generateTweetsFromText(data: RequestDataText): Observable<any> {
+  generateTweetsFromText(data: RequestDataText, userToken: string): Observable<any> {
+    let httpHeaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': userToken});
     let url: string = `${API_URL}/posts`;
-    return this.http.post(url, data, {headers: this.headers});
+    return this.http.post(url, data, {headers: httpHeaders});
   }
 }

@@ -31,7 +31,7 @@ class User(Base):
         self.username = username
         self.registered_on = datetime.datetime.now()
         self.admin = admin
-        self.token = secrets.token_hex(32)
+        self.token = str(secrets.token_hex(32))
 
 
 class UserSchema(Schema):

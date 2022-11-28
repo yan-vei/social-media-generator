@@ -83,7 +83,6 @@ def get_text_extracts_by_user_id(user_id):
 
     schema = TextExtractsAndUsersSchema(many=True)
     text_extracts = schema.dump(text_extracts_objects)
-
     session.close()
 
     return text_extracts
