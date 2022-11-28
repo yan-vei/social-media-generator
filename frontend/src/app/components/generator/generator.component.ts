@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { RequestDataText, RequestDataUrl } from 'src/app/entities/request-data.model';
 import { GeneratorService } from 'src/app/services/generator.service';
 import {Post} from 'src/app/entities/post.model'
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'generator',
@@ -19,10 +20,11 @@ export class GeneratorComponent implements OnInit {
 
   textForm = this.fb.group({
     title: [, Validators.required],
-    text: [, Validators.required]
+    text: [, Validators.required],
+    source: [, Validators.required]
   });
 
-  constructor(private generatorService: GeneratorService, private fb: FormBuilder) { }
+  constructor(private generatorService: GeneratorService, private fb: FormBuilder, private utilsService: UtilsService) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +38,7 @@ export class GeneratorComponent implements OnInit {
       .subscribe((tweets) =>
       {
         this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
-        this.generatedTweets.sort(this.compare)
+        this.generatedTweets.sort(this.utilsService.compare)
         this.generatedHashtags = tweets['hashtags'].splice(1, tweets['hashtags'].length-1)
       }
 
@@ -46,11 +48,12 @@ export class GeneratorComponent implements OnInit {
 
     else if (this.textForm.valid)
     {
-      let data = new RequestDataText(this.textForm.controls.text.value || '', this.textForm.controls.text.value || '')
+      let data = new RequestDataText(this.textForm.controls.text.value || '', this.textForm.controls.text.value || '', this.textForm.controls.source.value || '')
       this.generatorService.generateTweetsFromText(data)
       .subscribe((tweets) =>
       {
         this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
+        this.generatedTweets.sort(this.utilsService.compare)
         this.generatedHashtags = tweets['hashtags'].splice(1, tweets['hashtags'].length-1)
       }
 
@@ -58,14 +61,4 @@ export class GeneratorComponent implements OnInit {
     }
   }
 
-  compare(a: Post, b: Post)
-  {
-    let comparison = 0;
-    if (a.score > b.score) {
-      comparison = -1;
-    } else if (a.score< b.score) {
-      comparison = 1;
-    }
-    return comparison;
-  }
 }
