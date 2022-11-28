@@ -7,9 +7,9 @@
   <input id="username" type="text" formControlName="username">
 
   <label for="password">Password: </label>
-  <input id="password" type="text" formControlName="password">
+  <input id="password" type="password" formControlName="password">
 
 </form>
-
+<p *ngIf="this.errorMessage" style="color: red;">{{ errorMessage }}</p>
 <p>Complete the form to enable button.</p>
 <button type="submit" [disabled]="!profileForm.valid" (click)="onRegister()">Submit</button>
