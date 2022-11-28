@@ -54,6 +54,7 @@ export class HistoryComponent implements OnInit {
       .subscribe((texts) =>
       {
         this.texts = texts;
+        console.log(this.texts)
       }
       )
   }

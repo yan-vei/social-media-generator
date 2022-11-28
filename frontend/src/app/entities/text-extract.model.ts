@@ -1,7 +1,7 @@
 export class TextExtract {
   constructor(
-    public title: string,
     public text: string,
+    public title: string,
     public source: string,
     public id: number,
     public added_by: string,

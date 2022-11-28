@@ -92,7 +92,7 @@ def generate_post():
         data["sentences"], data["sentences_tokenized"] = text_preprocessor.preprocess_text(data["text"])
         data["SOURCE"] = get_source.get_source(data["source"])
 
-        new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], added_by=user_id)
+        new_text_extract = text_extracts_controller.save_text_extract(data["text"], data["Title"][1]["result"], data["source"], added_by=user_id)
         articles_extracts_users_controller.save_text_extracts_and_user(user_id, new_text_extract['id'])
         new_text_extract_id = new_text_extract['id']
 
