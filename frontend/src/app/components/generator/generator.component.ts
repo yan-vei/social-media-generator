@@ -39,9 +39,7 @@ export class GeneratorComponent implements OnInit {
       this.generatorService.generateTweetsFromUrl(data, this.userToken)
       .subscribe((tweets) =>
       {
-        this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
-        this.generatedTweets.sort(this.utilsService.compare)
-        this.generatedHashtags = tweets['hashtags'].splice(1, tweets['hashtags'].length-1)
+        this.formTweets(tweets);
       }
 
 
@@ -55,13 +53,17 @@ export class GeneratorComponent implements OnInit {
       this.generatorService.generateTweetsFromText(data, this.userToken)
       .subscribe((tweets) =>
       {
-        this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
-        this.generatedTweets.sort(this.utilsService.compare)
-        this.generatedHashtags = tweets['hashtags'].splice(1, tweets['hashtags'].length-1)
+        this.formTweets(tweets);
       }
 
       )
     }
+  }
+
+  formTweets(tweets: any): void {
+    this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
+    this.generatedTweets.sort(this.utilsService.compare)
+    this.generatedHashtags = tweets['hashtags'].splice(1, tweets['hashtags'].length-1)
   }
 
 }
