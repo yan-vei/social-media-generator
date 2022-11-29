@@ -25,3 +25,9 @@ input:focus {
 span {
   word-wrap: break-word;
 }
+
+button {
+  min-width: 130px;
+  max-width: 130px;
+  padding: 0;
+}
