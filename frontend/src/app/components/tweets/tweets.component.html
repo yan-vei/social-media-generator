@@ -9,12 +9,12 @@
 
 <h3 *ngIf="this.generatedTweets">Suggested Tweets:</h3>
 <div class="row" style="margin-left: 5px; justify-content: center;">
-  <div class="col-sm-3 tweet" style="max-width: 80%; max-height: 100%; margin-bottom: 1em;" *ngFor="let tweet of generatedTweets; index as i">
-    <span style="max-width: 100%;">{{tweet.post}}</span><br>
-    <span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span><br>
+  <div class="col-sm-3 tweet" style="max-width: 80%; max-height: 100%; margin-bottom: 1em; align-self: center" *ngFor="let tweet of generatedTweets; index as i">
+    <div class="row"><span style="max-width: 100%;">{{tweet.post}}</span></div>
+    <div class="row"><span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span></div>
+    <div class="row" style="max-width: 130px; margin-left: 4em;"><button class="btn btn-primary" style="margin: 3px; ">Tweet</button></div>
   </div>
 </div>
-
 
 <!--
 <a class="twitter-share-button"

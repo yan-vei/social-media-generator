@@ -48,9 +48,9 @@ import { ConfigurationComponent } from './components/admin/configuration/configu
       { path: 'register', component: RegisterComponent},
       { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]},
       { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]},
-      { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
-      { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
-      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
+      { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, ]},
+      { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, ]},
+      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, ]},
     ])
   ],
   providers: [
