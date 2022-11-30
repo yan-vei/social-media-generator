@@ -8,18 +8,42 @@ import { TweetService } from 'src/app/services/tweet.service';
 })
 export class TweetFormComponent implements OnInit {
   public tweet: any;
-  public hashtags: any[]
+  public hashtags: any[];
 
-  constructor(public tweetService: TweetService) { }
+  public tweetText: string;
+  public hashtag: string = "";
+  public selectedHts: number = 0;
+
+  constructor(public tweetService: TweetService) {
+  }
 
   ngOnInit(): void {
     this.tweet = this.tweetService.selectedTweet;
     this.hashtags = this.tweetService.selectedHashtags;
+    this.tweetText = this.tweetService.selectedTweet['post'];
   }
 
   getTweetUrl(): string {
-    let text = this.tweet.post;
-    return "https://twitter.com/intent/tweet?text=" + text;
+    let text = this.tweetText;
+    let hashtags = this.hashtag.slice(0, this.hashtag.length - 1)
+    return "https://twitter.com/intent/tweet?text=" + text +"&hashtags=" + hashtags;
+  }
+
+  getHashtag(index: number) {
+    return Object.keys(this.hashtags[index])[0]
+  }
+
+  getTotalCharacterCount() {
+    let ht = this.hashtag.slice(0, this.hashtag.length -1);
+    return this.tweetText.length + ht.length + this.selectedHts;
+  }
+
+  addToSelected(div: any) {
+    const ht = document.getElementById(div.id)!;
+    ht.style.border = "1px solid black";
+    let htText = ht.innerText.slice(1);
+    this.hashtag += htText + ',';
+    this.selectedHts++;
   }
 
 }

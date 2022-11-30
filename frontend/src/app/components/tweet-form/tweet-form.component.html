@@ -2,8 +2,15 @@
   <div class="row"><h3>Almost Ready to Post:</h3></div>
   <div class="row">
     <div class="col-sm-3 tweet" style="max-width: 80%; max-height: 100%; margin-bottom: 1em;">
-      <div class="row"><textarea>{{tweet.post}}</textarea></div>
-      <div class="row"><span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span></div>
+      <div class="row"><textarea [(ngModel)]="tweetText">
+      </textarea></div>
+      <div class="row">
+        <span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span>
+        <span style="color:darkblue;"><b>Characters:</b> {{getTotalCharacterCount()}}/280</span>
+        <div class="row" style="margin-left: 5px; display: flex; justify-content: center;">
+          <div (click)="addToSelected($event.target)" id="hashtag{{i}}" style="width: 30%; margin: 5px; border-radius: 5%;" *ngFor="let hashtag of this.hashtags; index as i">#{{ getHashtag(i) }}</div>
+        </div>
+      </div>
       <div class="row" style="margin-left: 0.6em;"><a class="btn btn-primary" [href]="this.getTweetUrl()" style=" max-width: 130px; margin-left: 6em;">Tweet</a></div>
     </div>
   </div>

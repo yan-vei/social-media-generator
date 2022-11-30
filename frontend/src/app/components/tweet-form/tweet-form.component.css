@@ -4,6 +4,12 @@
   left: 42%;
 }
 
+.hashtag {
+  background-color: aliceblue;
+  border: 1px solid blue;
+  border-radius: 50%;
+}
+
 textarea {
   border: none;
   border-radius: 5%;
@@ -13,8 +19,8 @@ textarea {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  max-height: 200px;
-  min-height: 200px;
+  max-height: 150px;
+  min-height: 150px;
   margin: 5px;
   max-width: 95%;
   resize:none;

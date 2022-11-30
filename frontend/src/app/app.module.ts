@@ -7,7 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { ArticleService } from './services/article.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { GeneratorComponent } from './components/generator/generator.component';
@@ -42,6 +42,7 @@ import { TweetFormComponent } from './components/tweet-form/tweet-form.component
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     TooltipModule.forRoot(),
     RouterModule.forRoot([
