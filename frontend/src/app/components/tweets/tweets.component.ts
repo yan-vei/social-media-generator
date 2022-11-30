@@ -32,8 +32,11 @@ export class TweetsComponent implements OnInit {
     this.router.navigate(['/tweet'])
   }
 
-  getSelectedHashtag(index: number) {
+  getSelectedHashtag(div: any, index: number) {
     let flag: boolean = false;
+    const ht = document.getElementById(div.id)!;
+    console.log(div)
+    ht.style.border = "1px solid black";
     for (let i = 0; i < this.tweetService.selectedHashtags.length; i++) {
       if (this.generatedHashtags[index] === this.tweetService.selectedHashtags[i]) {
         flag = true;

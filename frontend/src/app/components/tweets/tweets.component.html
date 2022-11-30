@@ -1,7 +1,7 @@
 <h3 *ngIf="this.generatedHashtags">Suggested Hashtags:</h3>
 <div class="row" style="margin: 0em 0em 1em 0em; text-align: center;">
-    <div (click)="this.getSelectedHashtag(i)" class="col-xl" *ngFor="let hashtag of generatedHashtags; index as i ">
-    <li>
+    <div class="col-xl" *ngFor="let hashtag of generatedHashtags; index as i ">
+    <li id="ht{{i}}" (click)="this.getSelectedHashtag($event.target, i)">
         <span><b>#{{ this.getHashtag(i) }}</b><br> score: {{ this.getHashtagScore(i) }}</span>
     </li>
   </div>
