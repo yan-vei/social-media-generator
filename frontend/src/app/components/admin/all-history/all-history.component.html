@@ -1,35 +1,82 @@
-<h1>All History</h1>
-<button (click)="getAllArticles()">Get Articles</button>
-<button (click)="getAllTexts()">Get Texts</button>
-
-<h2>Articles</h2>
-<div *ngFor="let article of this.articles, index as i">
-  <p>Article id: {{article.id}}</p>
-  <p>Title: {{article.title}}</p>
-  <p>Url: {{article.url}}</p>
-  <p>Text: {{article.text}}</p>
-  <p>Generated at: {{article.added_at}}</p>
-  <button (click)="deleteArticle(article.id, i)">Delete article</button>
-  <button (click)="getArticleTweets(article.id)">Get posts</button>
-
-  <div *ngIf="this.articleTweets">
-    <div *ngFor="let tweet of this.articleTweets">
-      <p>{{ tweet.post }}</p>
+<div style="text-align: center">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All History</h1>
     </div>
   </div>
-</div>
+  <div class="row" style="margin: 1em;">
+    <div class="col-sm">
+      <button class="btn btn-primary" (click)="getAllArticles()">Get Articles</button>
+      <br>
+      <button class="btn btn-primary" (click)="getAllTexts()">Get Texts</button>
+    </div>
 
-<h2>Texts</h2>
-<div *ngFor="let text of this.texts; index as i">
-  <p>Title: {{text.title}}</p>
-  <p>Text: {{text.text}}</p>
-  <p>Generated at: {{text.added_at}}</p>
-  <button (click)="deleteText(text.id, i)">Delete text</button>
-  <button (click)="getTextExtractsTweets(text.id)">Get posts</button>
+  </div>
 
-  <div *ngIf="this.textTweets">
-    <div *ngFor="let tweet of this.textTweets">
-      <p>{{ tweet.post }}</p>
+  <div class="row" style="align-items: center;">
+    <div class="col-sm">
+      <h2>Articles</h2>
+    </div>
+    <div class="col-sm" style="align-items: flex-end;">
+      <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="articleId" type="text">
+      <button class="btn btn-secondary">Search by title</button>
+    </div>
+    <div class="col-sm">
+      <button class="btn btn-secondary" (click)="this.displayArticles = !this.displayArticles">Hide</button>
     </div>
   </div>
+
+  <div style="text-align: left; width:100%" class="row" *ngIf="this.displayArticles">
+    <div style="margin: 1em 1em 1em 1em;" class="col-lg-12 article" *ngFor="let article of this.articles; index as i">
+      <h3><b>Title:</b> {{article.title}}</h3>
+      <p><b>Article id:</b> {{article.id}}</p>
+      <p><b>URL:</b><a href="{{article.url}}"> {{article.url}}</a></p>
+      <span><b>Text:</b> {{article.text}}</span>
+      <p><b>Generated on:</b> {{article.added_at | date: 'dd/MM/yyyy'}}</p>
+      <button class="btn btn-primary"  (click)="deleteArticle(article.id, i)">Delete article</button>
+      <button class="btn btn-primary"  (click)="getArticleTweets(article.id)">Get posts</button>
+      <button class="btn btn-primary" (click)="this.displayArticleTweets=!this.displayArticleTweets;">Hide</button>
+
+      <div class="row" style="margin-left: 5px; justify-content: center;" *ngIf = "this.displayArticleTweets">
+        <div class="col-sm-3 tweet" style="max-width: 80%; max-height: 100%; margin-bottom: 1em;" *ngFor="let tweet of articleTweets; index as i">
+          <span style="max-width: 100%;">{{tweet.post}}</span><br>
+          <span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span><br>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" style="align-items: center;">
+    <div class="col-sm">
+      <h2>Texts</h2>
+    </div>
+    <div class="col-sm" style="align-items: flex-end;">
+      <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="textId" type="text">
+      <button class="btn btn-secondary">Search by title</button>
+    </div>
+    <div class="col-sm">
+      <button class="btn btn-secondary" (click)="this.displayTexts = !this.displayTexts">Hide</button>
+    </div>
+  </div>
+
+  <div style="text-align: left; width:100%" class="row" *ngIf="this.displayTexts">
+    <div style="margin: 1em 1em 1em 1em;" class="col-lg-12 text" *ngFor="let text of this.texts, index as i">
+      <h3><b>Title:</b> {{text.title}}</h3>
+      <span><b>Text:</b> {{text.text}}</span>
+      <p><b>Generated on:</b> {{text.added_at | date: 'dd/MM/yyyy'}}</p>
+      <button class="btn btn-primary"  (click)="deleteText(text.id, i)">Delete text</button>
+      <button class="btn btn-primary" (click)="getTextExtractsTweets(text.id)">Get posts</button>
+      <button class="btn btn-primary" (click)="this.displayTextsTweets=!this.displayTextsTweets;">Hide</button>
+
+      <div class="row" style="margin-left: 5px; justify-content: center;" *ngIf="this.displayTextsTweets">
+        <div class="col-sm-3 tweet" style="max-width: 80%; max-height: 100%; margin-bottom: 1em;" *ngFor="let tweet of textTweets; index as i">
+          <span style="max-width: 100%;">{{tweet.post}}</span><br>
+          <span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span><br>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>

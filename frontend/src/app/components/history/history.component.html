@@ -59,7 +59,7 @@
 </div>
 
 <div style="text-align: left; width:100%" class="row" *ngIf="this.displayTexts">
-  <div style="margin: 1em 1em 1em 1em;" class="col-lg-12 article" *ngFor="let text of this.texts">
+  <div style="margin: 1em 1em 1em 1em;" class="col-lg-12 text" *ngFor="let text of this.texts">
     <h3><b>Title:</b> {{text.title}}</h3>
     <span><b>Text:</b> {{text.text}}</span>
     <p><b>Generated on:</b> {{text.added_at | date: 'dd/MM/yyyy'}}</p>
