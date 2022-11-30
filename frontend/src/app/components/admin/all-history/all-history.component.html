@@ -18,8 +18,8 @@
       <h2>Articles</h2>
     </div>
     <div class="col-sm" style="align-items: flex-end;">
-      <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="articleId" type="text">
-      <button class="btn btn-secondary">Search by title</button>
+      <input aria-label="Default" aria-describedby="inputGroup-sizing-default" #articleTitle type="text">
+      <button class="btn btn-secondary" (click)="this.searchArticleByTitle(articleTitle.value)">Search by title</button>
     </div>
     <div class="col-sm">
       <button class="btn btn-secondary" (click)="this.displayArticles = !this.displayArticles">Hide</button>
@@ -52,8 +52,8 @@
       <h2>Texts</h2>
     </div>
     <div class="col-sm" style="align-items: flex-end;">
-      <input aria-label="Default" aria-describedby="inputGroup-sizing-default" id="textId" type="text">
-      <button class="btn btn-secondary">Search by title</button>
+      <input aria-label="Default" aria-describedby="inputGroup-sizing-default" #textTitle type="text">
+      <button class="btn btn-secondary" (click)="this.searchTextByTitle(textTitle.value)">Search by title</button>
     </div>
     <div class="col-sm">
       <button class="btn btn-secondary" (click)="this.displayTexts = !this.displayTexts">Hide</button>
