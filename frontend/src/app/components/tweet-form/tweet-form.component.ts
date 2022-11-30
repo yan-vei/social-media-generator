@@ -35,7 +35,15 @@ export class TweetFormComponent implements OnInit {
 
   getTotalCharacterCount() {
     let ht = this.hashtag.slice(0, this.hashtag.length -1);
-    return this.tweetText.length + ht.length + this.selectedHts;
+    let totalCount = this.tweetText.length + ht.length + this.selectedHts;
+    const characterCount = document.getElementById('characterCount')!;
+    if (totalCount > 280) {
+      characterCount.style.color = "red";
+    }
+    else {
+      characterCount.style.color = "darkblue";
+    }
+    return totalCount;
   }
 
   addToSelected(div: any) {
