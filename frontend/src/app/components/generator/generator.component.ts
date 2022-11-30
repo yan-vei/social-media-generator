@@ -14,6 +14,12 @@ export class GeneratorComponent implements OnInit {
   public generatedHashtags: any = null;
   public userToken: string;
 
+  public _ = require('lodash');
+
+  public displayedTweets: any;
+
+  public page: number = 0;
+
   urlForm = this.fb.group({
     url: [, Validators.required]
   });
@@ -27,6 +33,25 @@ export class GeneratorComponent implements OnInit {
   constructor(private generatorService: GeneratorService, private fb: FormBuilder, private utilsService: UtilsService) { }
 
   ngOnInit(): void {
+  }
+
+  prevPage() {
+    this.page--;
+    if (this.page < 0) {
+      this.page = 0;
+    }
+    let tempTweets = this._.cloneDeep(this.generatedTweets);
+    this.displayedTweets = tempTweets.splice(this.page*10, 10);
+  }
+
+  nextPage() {
+    this.page++;
+    if (this.page > (this.generatedTweets.length / 10))
+    {
+      this.page--;
+    }
+    let tempTweets = this._.cloneDeep(this.generatedTweets);
+    this.displayedTweets = tempTweets.splice(this.page*10, 10)
   }
 
   generateTweets()
@@ -62,6 +87,8 @@ export class GeneratorComponent implements OnInit {
   formTweets(tweets: any): void {
     this.generatedTweets = tweets['tweets'].splice(1, tweets['tweets'].length-1)
     this.generatedTweets.sort(this.utilsService.compare)
+    let tempTweets = this._.cloneDeep(this.generatedTweets);
+    this.displayedTweets = tempTweets.splice(0, 10);
     this.generatedHashtags = tweets['hashtags'].splice(1, tweets['hashtags'].length-1)
   }
 

@@ -55,5 +55,10 @@
   </div>
 </div>
 
-<tweets [generatedTweets]="generatedTweets" [generatedHashtags]="generatedHashtags"></tweets>
+<div class="row" style="display: flex; justify-content: space-between;">
+  <button class="btn btn-secondary" [disabled]="!this.generatedTweets" (click)="prevPage()">Prev</button>
+  <button class="btn btn-secondary" [disabled]="!this.generatedTweets" (click)="nextPage()">Next</button>
+</div>
+
+<tweets [generatedTweets]="displayedTweets" [generatedHashtags]="generatedHashtags"></tweets>
 
