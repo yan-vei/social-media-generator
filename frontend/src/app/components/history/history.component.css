@@ -2,7 +2,7 @@ button {
   margin: 0.5em;
 }
 
-.article {
+.article, .text {
   border: 1px solid blue;
   background-color: rgb(231, 236, 242);
   margin: 5px;

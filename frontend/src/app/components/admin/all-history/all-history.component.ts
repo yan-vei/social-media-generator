@@ -17,6 +17,11 @@ export class AllHistoryComponent implements OnInit {
   public texts: TextExtract[] = [];
   public textTweets: Post[] = [];
 
+  public displayArticles: boolean = true;
+  public displayArticleTweets: boolean = true;
+  public displayTextsTweets: boolean = true;
+  public displayTexts: boolean = true;
+
   constructor(private articleService: ArticleService, private textService: TextService) { }
 
   ngOnInit(): void {

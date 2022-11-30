@@ -1,35 +1,77 @@
-<div>
-  <h2>Shortenings</h2>
-  <input type="file" (change)="this.onFileSelected($event)">
-  <button (click)="this.adminService.exportJson('shortenings.json')">Download Shortenings</button>
-  <button (click)="this.uploadFile()">Upload Shortenings</button>
-</div>
-
-<div>
-  <h2>Calls to action</h2>
-  <input type="file" (change)="this.onFileSelected($event)">
-  <button (click)="this.adminService.exportJson('calls-to-actions.json')">Download Calls to action</button>
-  <button (click)="this.uploadFile()">Upload Calls to action</button>
-</div>
-
-<div>
-  <h2>Templates</h2>
-  <input type="file" (change)="this.onFileSelected($event)">
-  <button (click)="this.adminService.exportJson('templates.json')">Download Templates</button>
-  <button (click)="this.uploadFile()">Upload Templates</button>
+<div class="row" style="margin-top:1em;"><div class="col-sm-4">
+  <div class="row">
+    <h2>Shortenings</h2>
+  </div>
+  <div class="row">
+    <input type="file" (change)="this.onFileSelected($event)">
+  </div>
+  <div class="row">
+    <div class="col-sm">
+    <button class="btn btn-primary" (click)="this.adminService.exportJson('shortenings.json')">Download Shortenings</button> <br>
+    <button class="btn btn-primary" (click)="this.uploadFile()">Upload Shortenings</button>
+    </div>
+  </div>
 </div>
 
 
-<div>
-  <h2>Verb markers</h2>
-  <input type="file" (change)="this.onFileSelected($event)">
-  <button (click)="this.adminService.exportJson('verb-markers.json')">Download verb markers</button>
-  <button (click)="this.uploadFile()">Upload verb markers</button>
+<div class="col-sm-4">
+  <div class="row">
+    <h2>Calls to action</h2>
+  </div>
+  <div class="row">
+    <input type="file" (change)="this.onFileSelected($event)">
+  </div>
+  <div class="row">
+    <div clsas="col-sm">
+      <button class="btn btn-primary" (click)="this.adminService.exportJson('calls-to-actions.json')">Download Calls to action</button> <br>
+    <button class="btn btn-primary" (click)="this.uploadFile()">Upload Calls to action</button>
+    </div>
+  </div>
 </div>
 
-<div>
-  <h2>Stopwords</h2>
-  <input type="file" (change)="this.onFileSelected($event)">
-  <button (click)="this.adminService.exportJson('stopwords.txt')">Download stopwords</button>
-  <button (click)="this.uploadFile()">Upload stopwords</button>
+<div class="col-sm-4">
+  <div class="row">
+    <h2>Templates</h2>
+  </div>
+  <div class="row">
+    <input type="file" (change)="this.onFileSelected($event)">
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <button class="btn btn-primary" (click)="this.adminService.exportJson('templates.json')">Download Templates</button><br>
+      <button class="btn btn-primary" (click)="this.uploadFile()">Upload Templates</button>
+    </div>
+  </div>
+</div></div>
+
+<div class="row" style="margin-top:1em;"><div class="col-sm-4">
+  <div class="row">
+    <h2>Verb markers</h2>
+  </div>
+  <div class="row">
+    <input type="file" (change)="this.onFileSelected($event)">
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <button class="btn btn-primary" (click)="this.adminService.exportJson('verb-markers.json')">Download verb markers</button><br>
+      <button class="btn btn-primary" (click)="this.uploadFile()">Upload verb markers</button>
+    </div>
+  </div>
 </div>
+
+
+<div class="col-sm-4">
+  <div class="row">
+    <h2>Stopwords</h2>
+  </div>
+  <div class="row">
+    <input type="file" (change)="this.onFileSelected($event)">
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <button class="btn btn-primary" (click)="this.adminService.exportJson('stopwords.txt')">Download stopwords</button><br>
+      <button class="btn btn-primary" (click)="this.uploadFile()">Upload stopwords</button>
+    </div>
+  </div>
+</div></div>
+
