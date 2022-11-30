@@ -45,7 +45,7 @@ def delete_text_extract():
 def get_article_by_title():
     try:
         title = request.args.get('title')
-        texts = text_extracts_controller.get_article_by_title(title)
+        texts = text_extracts_controller.get_text_extracts_by_title(title)
 
         return make_response(jsonify(texts), 200)
 
