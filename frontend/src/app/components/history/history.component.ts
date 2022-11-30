@@ -22,6 +22,9 @@ export class HistoryComponent implements OnInit {
   displayArticleTweets: boolean = true;
   displayTextsTweets: boolean = true;
 
+  public articleTitle: string = '';
+  public textTitle: string = '';
+
   constructor(private textService: TextService, private articleService: ArticleService) { }
 
   ngOnInit(): void {
@@ -68,6 +71,20 @@ export class HistoryComponent implements OnInit {
     });
   }
 
+  searchArticleByTitle(title: string): void {
+    this.articleService.getArticleByTitle(title)
+    .subscribe((articles) =>
+    {
+      this.articles = articles;
+    })
+  }
 
+  searchTextByTitle(title: string): void {
+    this.textService.getTextByTitle(title)
+    .subscribe((texts) =>
+    {
+      this.texts = texts;
+    })
+  }
 
 }

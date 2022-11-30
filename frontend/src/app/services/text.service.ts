@@ -34,4 +34,9 @@ export class TextService {
     let url: string = `${API_URL}/text-extracts?id=${id}`
     return this.http.delete(url)
   }
+
+  getTextByTitle(title: string): Observable<any> {
+    let url: string = `${API_URL}/text-extracts-by-title?title=${title}`
+    return this.http.get(url)
+  }
 }

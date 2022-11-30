@@ -38,4 +38,16 @@ def delete_text_extract():
         return make_response(jsonify({"status": "success", "message:": "Successfully deleted the text extract with the id " + id}), 200)
 
     except Exception as e:
-        return make_response(jsonify({"message": e, "status": "failed"}), 500)
+        return make_response(jsonify({"message": e, "status": "Failed."}), 500)
+
+
+@text_extracts.route('/text-extracts-by-title')
+def get_article_by_title():
+    try:
+        title = request.args.get('title')
+        texts = text_extracts_controller.get_article_by_title(title)
+
+        return make_response(jsonify(texts), 200)
+
+    except Exception as e:
+        return make_response(jsonify({"message": e, "status": "Failed."}), 500)

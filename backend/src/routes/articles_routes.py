@@ -11,6 +11,19 @@ def get_all_articles():
 
     return make_response(jsonify(articles), 200)
 
+
+@articles.route('/articles-by-title')
+def get_article_by_title():
+    try:
+        title = request.args.get('title')
+        articles = articles_controller.get_article_by_title(title)
+
+        return make_response(jsonify(articles), 200)
+
+    except Exception as e:
+        return make_response(jsonify({"message": e, "status": "Failed."}), 500)
+
+
 @articles.route('/articles', methods=['DELETE'])
 def delete_article():
     try:
@@ -23,7 +36,7 @@ def delete_article():
         return make_response(jsonify({"status": "success", "message:": "Successfully deleted the article with the id " + id}), 200)
 
     except Exception as e:
-        return make_response(jsonify({"message": e, "status": "failed"}), 500)
+        return make_response(jsonify({"message": e, "status": "Failed."}), 500)
 
 @articles.route('/articles', methods=['POST'])
 def save_article():

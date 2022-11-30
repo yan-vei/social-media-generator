@@ -40,6 +40,19 @@ def get_article_by_ids(ids):
     return articles_objects
 
 
+def get_article_by_title(title):
+    session = Session()
+    schema = ArticleSchema(many=True)
+
+    articles_by_user = session.query(Article).filter(Article.title.contains(title))
+
+    articles_objects = schema.dump(articles_by_user)
+
+    session.close()
+
+    return articles_objects
+
+
 def delete_article_by_id(id):
     session = Session()
     session.query(Article).filter_by(id=id).delete()
