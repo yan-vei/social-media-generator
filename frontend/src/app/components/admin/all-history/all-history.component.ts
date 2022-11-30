@@ -76,4 +76,20 @@ export class AllHistoryComponent implements OnInit {
     });
   }
 
+  searchArticleByTitle(title: string): void {
+    this.articleService.getArticleByTitle(title)
+    .subscribe((articles) =>
+    {
+      this.articles = articles;
+    })
+  }
+
+  searchTextByTitle(title: string): void {
+    this.textService.getTextByTitle(title)
+    .subscribe((texts) =>
+    {
+      this.texts = texts;
+    })
+  }
+
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RequestDataText, RequestDataUrl } from 'src/app/entities/request-data.model';
 import { GeneratorService } from 'src/app/services/generator.service';
-import {Post} from 'src/app/entities/post.model'
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
