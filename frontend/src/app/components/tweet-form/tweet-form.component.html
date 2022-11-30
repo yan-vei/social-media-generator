@@ -6,7 +6,7 @@
       </textarea></div>
       <div class="row">
         <span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span>
-        <span style="color:darkblue;"><b>Characters:</b> {{getTotalCharacterCount()}}/280</span>
+        <span id="characterCount"><b>Characters:</b> {{getTotalCharacterCount()}}/280</span>
         <div class="row" style="margin-left: 5px; display: flex; justify-content: center;">
           <div (click)="addToSelected($event.target)" id="hashtag{{i}}" style="width: 30%; margin: 5px; border-radius: 5%;" *ngFor="let hashtag of this.hashtags; index as i">#{{ getHashtag(i) }}</div>
         </div>
