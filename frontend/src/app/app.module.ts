@@ -22,6 +22,7 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
 import { EnsureAdmin } from './services/ensure-admin.service';
 import { AllHistoryComponent } from './components/admin/all-history/all-history.component';
 import { ConfigurationComponent } from './components/admin/configuration/configuration.component';
+import { TweetComponent } from './components/tweet/tweet.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ConfigurationComponent } from './components/admin/configuration/configu
     HistoryComponent,
     AllHistoryComponent,
     ConfigurationComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    TweetComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ import { ConfigurationComponent } from './components/admin/configuration/configu
     GeneratorService,
     LogoutService,
     EnsureAuthenticated,
-    EnsureAdmin
+    EnsureAdmin,
   ],
   bootstrap: [AppComponent]
 })
