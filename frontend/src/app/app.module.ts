@@ -22,7 +22,7 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
 import { EnsureAdmin } from './services/ensure-admin.service';
 import { AllHistoryComponent } from './components/admin/all-history/all-history.component';
 import { ConfigurationComponent } from './components/admin/configuration/configuration.component';
-import { TweetComponent } from './components/tweet/tweet.component';
+import { TweetFormComponent } from './components/tweet-form/tweet-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { TweetComponent } from './components/tweet/tweet.component';
     AllHistoryComponent,
     ConfigurationComponent,
     AdminPanelComponent,
-    TweetComponent
+    TweetFormComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +53,7 @@ import { TweetComponent } from './components/tweet/tweet.component';
       { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, ]},
       { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, ]},
       { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, ]},
+      {path: 'tweet', component: TweetFormComponent, canActivate: [EnsureAuthenticated]}
     ])
   ],
   providers: [

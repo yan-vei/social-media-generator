@@ -1,0 +1,24 @@
+.tweet {
+  position: absolute;
+  top: 10%;
+  left: 42%;
+}
+
+textarea {
+  border: none;
+  border-radius: 5%;
+  overflow: auto;
+  outline: none;
+  background-color: aliceblue;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  max-height: 200px;
+  min-height: 200px;
+  margin: 5px;
+  max-width: 95%;
+  resize:none;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
