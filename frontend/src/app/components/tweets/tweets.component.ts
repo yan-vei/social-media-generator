@@ -1,5 +1,8 @@
+import { NONE_TYPE } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/entities/post.model';
+import { Router } from '@angular/router';
+import { TweetService } from 'src/app/services/tweet.service';
+import { GeneratorComponent } from '../generator/generator.component';
 
 @Component({
   selector: 'tweets',
@@ -10,7 +13,7 @@ export class TweetsComponent implements OnInit {
   @Input() generatedTweets: any;
   @Input() generatedHashtags: any;
 
-  constructor() { }
+  constructor(private router: Router, private tweetService: TweetService) { }
 
   ngOnInit(): void {
 
@@ -24,4 +27,24 @@ export class TweetsComponent implements OnInit {
     return this.generatedHashtags[index][Object.keys(this.generatedHashtags[index])[0]]
   }
 
+ getSelectedTweet(index: number): void {
+    this.tweetService.selectedTweet = this.generatedTweets[index];
+    this.router.navigate(['/tweet'])
+  }
+
+  getSelectedHashtag(div: any, index: number) {
+    let flag: boolean = false;
+    const ht = document.getElementById(div.id)!;
+    console.log(div)
+    ht.style.border = "1px solid black";
+    for (let i = 0; i < this.tweetService.selectedHashtags.length; i++) {
+      if (this.generatedHashtags[index] === this.tweetService.selectedHashtags[i]) {
+        flag = true;
+      }
+    }
+    if (!flag)
+    {
+      this.tweetService.selectedHashtags.push(this.generatedHashtags[index]);
+    }
+  }
 }

@@ -7,7 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { ArticleService } from './services/article.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { GeneratorComponent } from './components/generator/generator.component';
@@ -22,7 +22,7 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
 import { EnsureAdmin } from './services/ensure-admin.service';
 import { AllHistoryComponent } from './components/admin/all-history/all-history.component';
 import { ConfigurationComponent } from './components/admin/configuration/configuration.component';
-import { TweetComponent } from './components/tweet/tweet.component';
+import { TweetFormComponent } from './components/tweet-form/tweet-form.component';
 
 @NgModule({
   declarations: [
@@ -37,11 +37,12 @@ import { TweetComponent } from './components/tweet/tweet.component';
     AllHistoryComponent,
     ConfigurationComponent,
     AdminPanelComponent,
-    TweetComponent
+    TweetFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     TooltipModule.forRoot(),
     RouterModule.forRoot([
@@ -53,6 +54,7 @@ import { TweetComponent } from './components/tweet/tweet.component';
       { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, ]},
       { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, ]},
       { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, ]},
+      {path: 'tweet', component: TweetFormComponent, canActivate: [EnsureAuthenticated]}
     ])
   ],
   providers: [

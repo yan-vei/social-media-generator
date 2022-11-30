@@ -1,7 +1,7 @@
 <h3 *ngIf="this.generatedHashtags">Suggested Hashtags:</h3>
 <div class="row" style="margin: 0em 0em 1em 0em; text-align: center;">
     <div class="col-xl" *ngFor="let hashtag of generatedHashtags; index as i ">
-    <li>
+    <li id="ht{{i}}" (click)="this.getSelectedHashtag($event.target, i)">
         <span><b>#{{ this.getHashtag(i) }}</b><br> score: {{ this.getHashtagScore(i) }}</span>
     </li>
   </div>
@@ -12,19 +12,7 @@
   <div class="col-sm-3 tweet" style="max-width: 80%; max-height: 100%; margin-bottom: 1em; align-self: center" *ngFor="let tweet of generatedTweets; index as i">
     <div class="row"><span style="max-width: 100%;">{{tweet.post}}</span></div>
     <div class="row"><span style="color:darkblue;"><b>Score:</b> {{tweet.score}}</span></div>
-    <div class="row" style="max-width: 130px; margin-left: 4em;"><button class="btn btn-primary" style="margin: 3px; ">Tweet</button></div>
+    <div (click)="this.getSelectedTweet(i)" class="row" style="max-width: 130px; margin-left: 4em;"><button class="btn btn-primary" style="margin: 3px; ">Tweet</button></div>
   </div>
 </div>
-
-<!--
-<a class="twitter-share-button"
-href="https://twitter.com/intent/tweet"
-data-size="large"
-data-text="custom share text"
-data-url="https://dev.twitter.com/web/tweet-button"
-data-hashtags="example,demo"
-target="_blank">
-Tweet
-</a>
--->
 
