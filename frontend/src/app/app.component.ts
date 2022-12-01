@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
+import { UtilsService } from './services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  constructor(public utils: UtilsService) {
   }
 
   ngOnInit() {
@@ -16,7 +17,4 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  isLoggedIn() {
-    return localStorage.getItem('user_token');
-  }
 }
