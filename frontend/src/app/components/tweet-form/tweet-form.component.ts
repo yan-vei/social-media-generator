@@ -23,6 +23,10 @@ export class TweetFormComponent implements OnInit {
     this.tweetText = this.tweetService.selectedTweet['post'];
   }
 
+  ngOnDestroy(): void {
+    this.tweetService.selectedHashtags = [];
+  }
+
   getTweetUrl(): string {
     let text = this.tweetText;
     let hashtags = this.hashtag.slice(0, this.hashtag.length - 1)
