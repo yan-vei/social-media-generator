@@ -10,9 +10,10 @@ from services import text_preprocessor
 from controllers import articles_extracts_users_controller, hashtags_controller, articles_controller, posts_controller, text_extracts_controller, users_controller
 from getters import get_source, get_title, get_hashtags, get_article_details, get_url, get_quotes, get_numbers, get_questions, get_first_sentence, get_key_sentences, get_calls_to_action, get_page_details
 import template_engine
+import config
 
 app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = config.secret_key
 bcrypt = Bcrypt(app)
 CORS(app)
 
@@ -212,4 +213,4 @@ def check_admin():
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
-    app.run(debug = True, host='0.0.0.0')
+    app.run(debug = False, host='0.0.0.0')

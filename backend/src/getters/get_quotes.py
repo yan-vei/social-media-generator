@@ -2,7 +2,7 @@ import json
 from services import emoji_counter
 import re
 import os
-from utils.check_os import SLASH
+from utils.check_env import SLASH
 
 definition = {
     'type': 'Quotes',

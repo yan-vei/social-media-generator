@@ -1,4 +1,5 @@
-<sidebar *ngIf="this.isLoggedIn()" id="sidebar"></sidebar>
+<spinner></spinner>
+<sidebar *ngIf="this.utils.isLoggedIn()" id="sidebar"></sidebar>
 <div style="width:90%;float:right;">
   <router-outlet></router-outlet>
 </div>

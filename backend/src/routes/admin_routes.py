@@ -1,7 +1,7 @@
 from flask import Blueprint, send_file
 from flask import jsonify, make_response, request
 import os
-from utils.check_os import SLASH
+from utils.check_env import SLASH
 
 admin = Blueprint("admin", __name__)
 

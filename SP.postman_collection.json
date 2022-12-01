@@ -1,0 +1,655 @@
+{
+	"info": {
+		"_postman_id": "40813ffa-8439-4968-935a-ad0223a2a5fb",
+		"name": "SP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Articles",
+			"item": [
+				{
+					"name": "Get articles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "7893aaeb560625c984e00a3f7d1970e7119bb6c21a6a021ecd763f9e92ad4330",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:5000/articles",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"articles"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete article",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/articles?id=1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"articles"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/all-articles",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"all-articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get article by title",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Post post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/posts",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/posts",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete posts batch",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/postsss",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"postsss"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post by article id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "952e73628fa8206967701477f6f025a92811bcc4cfa236744c12d4241063c33a",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:5000/posts-by-article?id=1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"posts-by-article"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post by text extract id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "c503c3bc8b7adb39b9087470c0ee056b30fe642e32bed09d9eaa02d084babe4c",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:5000/posts-by-text-extract?id=1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"posts-by-text-extract"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Text Extracts",
+			"item": [
+				{
+					"name": "Add text extract",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete text extract",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/text-extracts?id=1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"text-extracts"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get text extracts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "7893aaeb560625c984e00a3f7d1970e7119bb6c21a6a021ecd763f9e92ad4330",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:5000/text-extracts",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"text-extracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all text extracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/all-text-extracts",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"all-text-extracts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hashtags",
+			"item": [
+				{
+					"name": "Get hashtags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/hashtags",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"hashtags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete hashtags batch",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/hashtagsss",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"hashtagsss"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\", \r\n    \"password\": \"test\",\r\n    \"username\": \"test\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/users/register",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"kris\",\r\n    \"username\": \"kris\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/users/login",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/users/logout",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/users/status",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get configs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Repos/social-media-generator/backend/src/data/shortenings.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/configs",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"configs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Is Admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "33f7faa83fcb83cdee7c7fe3b64783083731adaac6d3c6a324400da62834a7e1",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:5000/admin",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generate posts text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "c503c3bc8b7adb39b9087470c0ee056b30fe642e32bed09d9eaa02d084babe4c",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Thousands of young people have staged a coordinated “global climate strike” across Asia, Africa and Europe in a call for reparations for those worst affected by climate breakdown. From New Zealand and Japan to Germany and the Democratic Republic of Congo, activists walked out of schools, universities and jobs to demand rich countries pay for the damage global heating is inflicting on the poor. In the latest day of action by the Fridays For Future movement, strikes “for climate reparations and justice” were planned in about 450 locations worldwide. The protests take place six weeks before the Cop27 climate summit, where developing countries plan to push for compensation for climate-related destruction to homes, infrastructure and livelihoods. Recent months have seen deadly floods engulfing large parts of Pakistan, wildfires ravaging north Africa, Europe and North America, and record-breaking heatwaves in Britain and India. “We’re striking all over the world because the governments in charge are still doing too little for climate justice,” said Darya Sotoodeh, a spokesperson for the group’s chapter in Germany. Over 100 people took part in the climate strike in Bengaluru, India. Over 100 people took part in the climate strike in Bengaluru (formerly Bangalore), India. “One day, it could be my house that gets flooded,” said 15-year-old Park Chae-yun, one of about 200 protesting in Seoul, South Korea. “I’m living with a sense of crisis, so I think it is more important to deliver my concerns to the government to take preventive measures rather than going to school.” The biggest strike took place in Berlin, with police in the German capital estimating 20,000 took part in a rally calling on their government to set up a €100bn fund for tackling the climate crisis. About 400 young activists gathered in the Democratic Republic of Congo’s capital, Kinshasa, chanting “Act for Africa, protect our planet”. They marched on the shoulder of a busy thoroughfare carrying cardboard signs saying “Climate Justice” and “Climate SOS”. In Rome, 5,000 young people turned out for a march that ended near the Colosseum. One carried a placard saying: “The climate is changing. Why aren’t we?” Denmark is the only rich country that has so far stepped up with funding for the problem of “loss and damage” due to climate-related disasters, announcing at the UN assembly this week it would provide DKK 100m (£12m) to address it. A statement on the Fridays For Future website said: “Colonisers and capitalists are at the core of every system of oppression that has caused the climate crisis, and decolonisation, using the tool of climate reparations, is the best kind of climate action.” The Fridays For Future youth movement began in 2018, inspired by Greta Thunberg’s solitary protests outside the Swedish parliament. It reached a high point in November 2019, when 4 million people took part in 4,500 actions worldwide on one Friday.\",\r\n    \"title\": \"Thousands call for ‘climate reparations and justice’ in global protests\",\r\n    \"source\": \"The Guardian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/posts",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate posts url",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "7893aaeb560625c984e00a3f7d1970e7119bb6c21a6a021ecd763f9e92ad4330",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://www.theguardian.com/environment/2022/sep/23/thousands-call-for-climate-reparations-and-justice-in-global-protests\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/posts",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

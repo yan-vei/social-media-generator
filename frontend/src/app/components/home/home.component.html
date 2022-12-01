@@ -20,7 +20,7 @@
   </button>
   </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="this.utils.isLoggedIn()">
   <div class="col-sm-10" style="margin: 1em;">
     <button type="button" class="btn btn-secondary"
           tooltip="Click to logout" (click)="this.logout.onLogout()">

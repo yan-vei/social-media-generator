@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NewUser } from 'src/app/entities/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { PasswordStrengthValidator } from 'src/app/validators/password-validator';
 
 @Component({
   selector: 'register',
@@ -16,8 +17,8 @@ export class RegisterComponent implements OnInit {
 
   profileForm = this.fb.group({
     username: [, Validators.required],
-    password: [, Validators.required],
-    email: [, Validators.required]
+    password: [, [Validators.required, Validators.minLength(8), PasswordStrengthValidator]],
+    email: [, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]]
   });
 
   constructor(private router: Router, private auth: AuthService, private fb: FormBuilder) {

@@ -18,4 +18,8 @@ export class UtilsService {
     }
     return comparison;
   }
+
+  isLoggedIn() {
+    return localStorage.getItem('user_token');
+  }
 }
