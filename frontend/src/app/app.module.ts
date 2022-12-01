@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { ArticleService } from './services/article.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,6 +23,8 @@ import { EnsureAdmin } from './services/ensure-admin.service';
 import { AllHistoryComponent } from './components/admin/all-history/all-history.component';
 import { ConfigurationComponent } from './components/admin/configuration/configuration.component';
 import { TweetFormComponent } from './components/tweet-form/tweet-form.component';
+import { SpinnerInterceptorService } from './services/spinner-interceptor.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { TweetFormComponent } from './components/tweet-form/tweet-form.component
     AllHistoryComponent,
     ConfigurationComponent,
     AdminPanelComponent,
-    TweetFormComponent
+    TweetFormComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { TweetFormComponent } from './components/tweet-form/tweet-form.component
     LogoutService,
     EnsureAuthenticated,
     EnsureAdmin,
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
