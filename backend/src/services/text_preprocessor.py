@@ -1,7 +1,7 @@
 from functools import partial
 import re
 import os
-from utils.check_os import SLASH
+from utils.check_env import SLASH
 
 SENTENCES_PATTERN = re.compile(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s')
 

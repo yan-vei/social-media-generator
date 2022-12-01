@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 import os
-from utils.check_os import SLASH
+from utils.check_env import SLASH
 
 from services.text_preprocessor import load_stopwords
 
