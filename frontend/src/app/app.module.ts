@@ -54,9 +54,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
       { path: 'register', component: RegisterComponent},
       { path: 'generator', component: GeneratorComponent, canActivate: [EnsureAuthenticated]},
       { path: 'history', component: HistoryComponent, canActivate: [EnsureAuthenticated]},
-      { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, ]},
-      { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, ]},
-      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, ]},
+      { path:'admin/all-history', component: AllHistoryComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
+      { path:'admin/configuration', component: ConfigurationComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
+      { path: 'admin', component: AdminPanelComponent, canActivate: [EnsureAuthenticated, EnsureAdmin]},
       {path: 'tweet', component: TweetFormComponent, canActivate: [EnsureAuthenticated]}
     ])
   ],
