@@ -40,7 +40,7 @@ export class AllHistoryComponent implements OnInit {
 
   getAllArticles()
   {
-    this.articleService.getArticles()
+    this.articleService.getAllArticles()
       .subscribe((articles) =>
       {
         this.articles = articles;
@@ -59,7 +59,7 @@ export class AllHistoryComponent implements OnInit {
 
   getAllTexts()
   {
-    this.textService.getTextExtracts()
+    this.textService.getAllTextExtracts()
       .subscribe((texts) =>
       {
         this.texts = texts;
